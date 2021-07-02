@@ -1,0 +1,116 @@
+.home {
+  .cardRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 1rem 0.5rem;
+    flex-wrap: wrap;
+
+    .card {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-left: 1rem;
+      text-align: center;
+      position: relative;
+      flex: 1;
+
+      a {
+        position: absolute;
+        bottom: 5px;
+        margin-top: 1rem;
+        text-decoration: none;
+        color: skyblue;
+        font-size: 1rem;
+        font-weight: 300;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      &:nth-last-child(1) {
+        margin-right: 0;
+      }
+
+      .circle {
+        width: 100px;
+        height: 100px;
+        background-color: $black;
+        border-radius: 50%;
+        margin: 1rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 2rem;
+        flex-direction: column;
+
+        p {
+          font-size: 0.85rem;
+        }
+      }
+
+      .memberRow {
+        justify-content: center !important;
+        .column {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+
+          &:nth-last-child(1) {
+            margin-right: 0;
+          }
+
+          .detailBox {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .detailRow {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        .detailBox {
+          text-align: center;
+          margin-right: 1rem;
+          padding: 0.5rem;
+          transition: all 400ms ease-in-out;
+          cursor: pointer;
+          border-radius: 5px;
+          p {
+            font-size: 0.85rem;
+            margin-top: 0.1rem;
+          }
+          &:nth-last-child(1) {
+            margin-right: 0;
+          }
+          &:hover {
+            background-color: rgba(220, 220, 200, 0.85);
+          }
+
+          h6 {
+            margin-top: 0.5rem;
+            color: #ccd;
+            font-size: 0.75rem;
+            font-weight: 300;
+          }
+        }
+      }
+    }
+    .chapters,
+    .meets,
+    .events {
+      .detailRow {
+        .detailBox {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
