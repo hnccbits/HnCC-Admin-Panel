@@ -148,6 +148,12 @@
   text-align: center;
   background-color: #242526;
   cursor: pointer;
+  transition: all 400ms ease-in-out;
+}
+
+.slider .content .body .element:hover {
+  box-shadow: 2px 2px 10px #e4e6eb;
+  transform: scale(1.05);
 }
 
 .slider .content .footer {
@@ -180,7 +186,7 @@
   right: 0;
   bottom: 0;
   color: #18191a;
-  height: 70vh;
+  height: 80vh;
   width: 15%;
   background-color: #e4e6eb;
   border-radius: 1rem 1rem 0 0;
@@ -364,6 +370,7 @@
   transition: all 400ms ease-in-out;
   cursor: pointer;
   border-radius: 5px;
+  min-width: 100px;
 }
 
 .home .cardRow .card .detailRow .detailBox p {
@@ -376,7 +383,7 @@
 }
 
 .home .cardRow .card .detailRow .detailBox:hover {
-  background-color: rgba(220, 220, 200, 0.85);
+  background-color: rgba(220, 220, 220, 0.85);
 }
 
 .home .cardRow .card .detailRow .detailBox h6 {
@@ -390,6 +397,7 @@
 .home .cardRow .meets .detailRow .detailBox,
 .home .cardRow .events .detailRow .detailBox {
   text-align: left;
+  width: 100px;
 }
 
 * {

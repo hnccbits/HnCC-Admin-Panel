@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { AiFillGithub } from 'react-icons/ai';
 import { BiNetworkChart } from 'react-icons/bi';
@@ -6,6 +6,61 @@ import { MdNotificationsActive } from 'react-icons/md';
 
 function RightSlider() {
   const [goBottom, setGoBottom] = useState(false);
+  const [data, setData] = useState({});
+  const [githubMember, setGithubMember] = useState(0);
+  const [latest, setLatest] = useState({});
+
+  useEffect(() => {
+    test();
+    test1();
+    test2();
+  }, []);
+
+  const test = async () => {
+    try {
+      const response = await fetch('https://api.github.com/orgs/hnccbits');
+
+      if (response.status !== 200) throw 'Something went wrong';
+      else {
+        const data = await response.json();
+        setData(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const test1 = async () => {
+    try {
+      const response = await fetch(
+        'https://api.github.com/orgs/hnccbits/members'
+      );
+
+      if (response.status !== 200) throw 'Something went wrong';
+      else {
+        const data = await response.json();
+        setGithubMember(data.length);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const test2 = async () => {
+    try {
+      const response = await fetch(
+        'https://api.github.com/orgs/hnccbits/repos?per_page=100&sort=created'
+      );
+
+      if (response.status !== 200) throw 'Something went wrong';
+      else {
+        const data = await response.json();
+        setLatest(data[0]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -31,22 +86,22 @@ function RightSlider() {
             <div className="details">
               <div className="detailRow">
                 <div className="detailBox">
-                  <h3>20</h3>
+                  <h3>{data.public_repos}</h3>
                   <p>Repositories</p>
                 </div>
                 <div className="detailBox">
-                  <h3>20</h3>
-                  <p>Memeber</p>
+                  <h3>{data.public_gists}</h3>
+                  <p>Gists</p>
                 </div>
               </div>
               <div className="detailRow">
                 <div className="detailBox">
-                  <h3>20</h3>
-                  <p>Stars</p>
+                  <h3>{githubMember}</h3>
+                  <p>Members</p>
                 </div>
                 <div className="detailBox">
-                  <h3>20</h3>
-                  <p>Packages</p>
+                  <h3>{data.followers}</h3>
+                  <p>Followers</p>
                 </div>
               </div>
             </div>
@@ -82,12 +137,17 @@ function RightSlider() {
           <div className="notifications">
             <div className="logo">
               <MdNotificationsActive size={30} />
-              <p>Upcoming Events</p>
+              <p>Latest Project</p>
             </div>
             <div className="card">
-              <h3>Title</h3>
-              <p>Description of the events</p>
-              <h6>{new Date().toLocaleDateString()}</h6>
+              <h3>{latest.name}</h3>
+              <p style={{ fontSize: '14px', color: 'ccd', margin: '0.8rem 0' }}>
+                {latest.description}
+              </p>
+              <p> Open Issues: {latest.open_issues}</p>
+              <h6>
+                Created at: {new Date(latest.created_at).toLocaleDateString()}
+              </h6>
             </div>
           </div>
         </div>

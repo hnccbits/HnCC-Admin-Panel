@@ -83,6 +83,7 @@
           transition: all 400ms ease-in-out;
           cursor: pointer;
           border-radius: 5px;
+          min-width: 100px;
           p {
             font-size: 0.85rem;
             margin-top: 0.1rem;
@@ -91,7 +92,7 @@
             margin-right: 0;
           }
           &:hover {
-            background-color: rgba(220, 220, 200, 0.85);
+            background-color: rgba(220, 220, 220, 0.85);
           }
 
           h6 {
@@ -109,6 +110,7 @@
       .detailRow {
         .detailBox {
           text-align: left;
+          width: 100px;
         }
       }
     }
