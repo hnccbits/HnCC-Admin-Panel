@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleLogin = () => {
     if (!username || !password) {
-      alert('Please enter username and passowrd');
+      alert('Please enter username and password');
       return;
     } else {
       setRedirect('/home');

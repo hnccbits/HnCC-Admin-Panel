@@ -1,14 +1,19 @@
 import React from 'react';
-import Screen from './Screen';
+import Screen from '../Screen';
+
 
 function Member() {
   return (
     <Screen>
-      <div>
-        <h1>Member</h1>
-      </div>
+    <div className="Member">
+    <h1>member</h1>
+    </div>
+        
+    
     </Screen>
   );
 }
 
 export default Member;
+
+
