@@ -7,22 +7,22 @@ function Member() {
     <div className="memberContainer">
         <div className="memberChild">
             <div className="year">
-              <p>Final</p>
+              <MemberList  title="Final" num={20}/>
             </div>
         </div>
         <div className="memberChild">
             <div className="year">
-              <p>Pre-Final</p>
+             <MemberList  title="Pre-Final"  num={20}/>
             </div>
         </div>
         <div className="memberChild">
             <div className="year">
-              <p>Sophomores</p>
+             <MemberList  title="Sophomores"  num={20}/>
             </div>
         </div>
         <div className="memberChild">
             <div className="year">
-              <p>Freshers</p>
+             <MemberList title="Freshers"  num={20}/>
             </div>
         </div>
     </div>
@@ -32,7 +32,14 @@ function Member() {
 
 export default Member;
 
-
+const MemberList = ({ title,num }) => {
+  return (
+    <div className="memberList">
+      <p>{title}</p>
+      {num}
+    </div>
+  );
+};
 
 
 
