@@ -3,63 +3,53 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { AiFillGithub } from 'react-icons/ai';
 import { BiNetworkChart } from 'react-icons/bi';
 import { MdNotificationsActive } from 'react-icons/md';
+import GithubApi from '../../api/GithubApi';
+import BackendApi from '../../api/BackendApi';
 
 function RightSlider() {
   const [goBottom, setGoBottom] = useState(false);
-  const [data, setData] = useState({});
-  const [githubMember, setGithubMember] = useState(0);
-  const [latest, setLatest] = useState({});
+  const [githubData, setGtihubData] = useState({});
+  const [githubMemberCount, setGithubMemberCount] = useState(0);
+  const [latestRepo, setLatestRepo] = useState([]);
 
   useEffect(() => {
-    test();
-    test1();
-    test2();
+    initialLoad();
   }, []);
 
-  const test = async () => {
-    try {
-      const response = await fetch('https://api.github.com/orgs/hnccbits');
+  const initialLoad = async () => {
+    await GithubApi.getOrgInfo()
+      .then((res) => {
+        if (res.type === 'success') {
+          setGtihubData(res.data);
+        } else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-      if (response.status !== 200) throw 'Something went wrong';
-      else {
-        const data = await response.json();
-        setData(data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    await GithubApi.getOrgMemberInfo()
+      .then((res) => {
+        if (res.type === 'success') {
+          setGithubMemberCount(res.data.length);
+        } else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-  const test1 = async () => {
-    try {
-      const response = await fetch(
-        'https://api.github.com/orgs/hnccbits/members'
-      );
+    await GithubApi.getOrgRepoInfo()
+      .then((res) => {
+        if (res.type === 'success') {
+          setLatestRepo(res.data);
+          console.log(res.data);
+        } else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-      if (response.status !== 200) throw 'Something went wrong';
-      else {
-        const data = await response.json();
-        setGithubMember(data.length);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const test2 = async () => {
-    try {
-      const response = await fetch(
-        'https://api.github.com/orgs/hnccbits/repos?per_page=100&sort=created'
-      );
-
-      if (response.status !== 200) throw 'Something went wrong';
-      else {
-        const data = await response.json();
-        setLatest(data[0]);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    const res = await BackendApi.getAllUsers();
+    console.log(res);
   };
 
   return (
@@ -86,21 +76,21 @@ function RightSlider() {
             <div className="details">
               <div className="detailRow">
                 <div className="detailBox">
-                  <h3>{data.public_repos}</h3>
+                  <h3>{githubData.public_repos}</h3>
                   <p>Repositories</p>
                 </div>
                 <div className="detailBox">
-                  <h3>{data.public_gists}</h3>
+                  <h3>{githubData.public_gists}</h3>
                   <p>Gists</p>
                 </div>
               </div>
               <div className="detailRow">
                 <div className="detailBox">
-                  <h3>{githubMember}</h3>
+                  <h3>{githubMemberCount}</h3>
                   <p>Members</p>
                 </div>
                 <div className="detailBox">
-                  <h3>{data.followers}</h3>
+                  <h3>{githubData.followers}</h3>
                   <p>Followers</p>
                 </div>
               </div>
@@ -139,15 +129,28 @@ function RightSlider() {
               <MdNotificationsActive size={30} />
               <p>Latest Project</p>
             </div>
-            <div className="card">
-              <h3>{latest.name}</h3>
-              <p style={{ fontSize: '14px', color: 'ccd', margin: '0.8rem 0' }}>
-                {latest.description}
-              </p>
-              <p> Open Issues: {latest.open_issues}</p>
-              <h6>
-                Created at: {new Date(latest.created_at).toLocaleDateString()}
-              </h6>
+            <div className="columns">
+              {latestRepo.map((item) => {
+                return (
+                  <div className="card">
+                    <h3>{item.name}</h3>
+                    <p
+                      style={{
+                        fontSize: '14px',
+                        color: 'ccd',
+                        margin: '0.8rem 0',
+                      }}
+                    >
+                      {item.description}
+                    </p>
+                    <p> Open Issues: {item.open_issues}</p>
+                    <h6>
+                      Created at:{' '}
+                      {new Date(item.created_at).toLocaleDateString()}
+                    </h6>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
