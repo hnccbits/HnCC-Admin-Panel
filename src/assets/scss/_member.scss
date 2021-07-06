@@ -1,3 +1,40 @@
-.h1{
-    color:white;
-}
+.memberContainer{
+    display:grid;
+    grid-template-columns: auto auto;
+    justify-content:center;
+    align-content:center;
+    background-color:#18191a;
+
+     .memberChild{
+      width:20vw;
+      height:40vh;
+      background-color:white;
+      margin:30px;
+      border-radius:10px;
+      padding:auto;
+      display:flex;
+      justify-content:center;
+      align-items: center;
+
+
+         .year{
+         width:60%;
+         height:60%;
+         background-color: #18191a;
+         padding:auto;
+         border-radius: 50%;
+         padding:auto;
+         display:flex;
+         justify-content:center;
+         align-items: center;
+
+
+             p{
+              text-align: center;
+              color:#fffffe;
+              font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+              font-size: medium;
+             }
+         }
+     } 
+ }   
