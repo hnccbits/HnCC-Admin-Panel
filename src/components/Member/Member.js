@@ -1,32 +1,45 @@
 import React from 'react';
 import Screen from '../Screen';
-import '../../assets/scss/_member.scss'
+import '../../assets/scss/_member.scss';
+import {BrowserRouter as Router} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+import { useHistory } from 'react-router-dom';
+
+
+
 function Member() {
+  const history = useHistory();
   return (
+    <Router>
     <Screen>
     <div className="memberContainer">
-        <div className="memberChild">
+        <div onClick={() => history.push('/members/Final')} className="memberChild">
             <div className="year">
               <MemberList  title="Final" num={20}/>
+              
             </div>
         </div>
-        <div className="memberChild">
+        <div onClick={() => history.push('/members/Pre-Final')} className="memberChild">
             <div className="year">
              <MemberList  title="Pre-Final"  num={20}/>
+             
             </div>
         </div>
-        <div className="memberChild">
+        <div onClick={() => history.push('/members/Sophomores')} className="memberChild">
             <div className="year">
              <MemberList  title="Sophomores"  num={20}/>
+             
             </div>
         </div>
-        <div className="memberChild">
+        <div onClick={() => history.push('/members/Freshers')} className="memberChild">
             <div className="year">
              <MemberList title="Freshers"  num={20}/>
+            
             </div>
         </div>
     </div>
     </Screen>
+    </Router>
   );
 }
 
