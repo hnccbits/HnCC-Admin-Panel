@@ -13,25 +13,25 @@ function Member() {
     <Router>
     <Screen>
     <div className="memberContainer">
-        <div onClick={() => history.push('/members/Final')} className="memberChild">
+        <div onClick={() => history.push('/members/final')} className="memberChild">
             <div className="year">
               <MemberList  title="Final" num={20}/>
               
             </div>
         </div>
-        <div onClick={() => history.push('/members/Pre-Final')} className="memberChild">
+        <div onClick={() => history.push('/members/prefinal')} className="memberChild">
             <div className="year">
              <MemberList  title="Pre-Final"  num={20}/>
              
             </div>
         </div>
-        <div onClick={() => history.push('/members/Sophomores')} className="memberChild">
+        <div onClick={() => history.push('/members/sophomores')} className="memberChild">
             <div className="year">
              <MemberList  title="Sophomores"  num={20}/>
              
             </div>
         </div>
-        <div onClick={() => history.push('/members/Freshers')} className="memberChild">
+        <div onClick={() => history.push('/members/freshers')} className="memberChild">
             <div className="year">
              <MemberList title="Freshers"  num={20}/>
             
