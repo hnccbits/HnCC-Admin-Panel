@@ -1,15 +1,67 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import BackendApi from '../../api/BackendApi';
 import Screen from '../Screen';
 
+const getYearlyCount = (data) => {
+  const freshers = data.filter((item) => item.year === 2020).length;
+  const sophomore = data.filter((item) => item.year === 2019).length;
+  const prefinal = data.filter((item) => item.year === 2018).length;
+  const final = data.filter((item) => item.year === 2017).length;
+
+  const count = {
+    freshers,
+    sophomore,
+    prefinal,
+    final,
+  };
+  return count;
+};
+
 function Home() {
+  const [memberCount, setMemberCount] = useState(0);
+  const [freshersCount, setFreshersCount] = useState(0);
+  const [sophomoreCount, setSophomoreCount] = useState(0);
+  const [prefinalCount, setPrefinalCount] = useState(0);
+  const [finalCount, setFinalCount] = useState(0);
+
+  useEffect(() => {
+    initialLoad();
+  }, []);
+
+  const initialLoad = async () => {
+    await BackendApi.getAllUsers()
+      .then((res) => {
+        if (res.type === 'success') {
+          setMemberCount(res.data.length);
+          const { freshers, sophomore, prefinal, final } = getYearlyCount(
+            res.data
+          );
+          setFreshersCount(freshers);
+          setSophomoreCount(sophomore);
+          setPrefinalCount(prefinal);
+          setFinalCount(final);
+        } else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // await BackendApi.getUserByYear(2019).then((res) => console.log(res)); testing
+  };
   return (
     <Screen>
       <div className="home">
         <div className="cardRow">
           <div className="card">
-            <Circle num={60} title={'Members'} />
-            <DetailRowMember className="memberRow" />
+            <Circle num={memberCount} title={'Members'} />
+            <DetailRowMember
+              final={finalCount}
+              prefinal={prefinalCount}
+              freshers={freshersCount}
+              sophomore={sophomoreCount}
+              className="memberRow"
+            />
             <Link to="/members">View More</Link>
           </div>
           <Card
@@ -51,10 +103,6 @@ function Home() {
             className="events"
           />
         </div>
-        <div className="timeline">
-          <div className="details"></div>
-          <div className="tree"></div>
-        </div>
       </div>
     </Screen>
   );
@@ -65,8 +113,15 @@ export default Home;
 const ColumnMember = ({ data }) => {
   return (
     <div className="column">
-      {data.map((item) => {
-        return <DetailBox num={item.num} nav={item.nav} title={item.title} />;
+      {data.map((item, index) => {
+        return (
+          <DetailBox
+            key={index}
+            num={item.num}
+            nav={item.nav}
+            title={item.title}
+          />
+        );
       })}
     </div>
   );
@@ -93,19 +148,25 @@ const Circle = ({ num, title }) => {
   );
 };
 
-const DetailRowMember = ({ className = '' }) => {
+const DetailRowMember = ({
+  freshers,
+  sophomore,
+  prefinal,
+  final,
+  className = '',
+}) => {
   return (
     <div className={`detailRow ${className}`}>
       <ColumnMember
         data={[
-          { num: 20, nav: 'members', title: 'Final' },
-          { num: 20, nav: 'members', title: 'Prefinal' },
+          { num: final, nav: 'members', title: 'Final' },
+          { num: prefinal, nav: 'members', title: 'Prefinal' },
         ]}
       />
       <ColumnMember
         data={[
-          { num: 20, nav: 'members', title: 'Sophomore' },
-          { num: 20, nav: 'members', title: 'Freshers' },
+          { num: sophomore, nav: 'members', title: 'Sophomore' },
+          { num: freshers, nav: 'members', title: 'Freshers' },
         ]}
       />
     </div>
@@ -115,9 +176,10 @@ const DetailRowMember = ({ className = '' }) => {
 const DetailRow = ({ data }) => {
   return (
     <div className="detailRow">
-      {data.map((item) => {
+      {data.map((item, index) => {
         return (
           <DetailBox
+            key={index}
             num={item.title}
             title={item.decp}
             date={new Date().toLocaleDateString()}
@@ -134,7 +196,6 @@ const Card = ({ className, num, title, data, nav }) => {
     <div className={`card ${className}`}>
       <Circle num={num} title={title} />
       <DetailRow data={data} />
-
       <Link to={`/${nav}`}>View More</Link>
     </div>
   );

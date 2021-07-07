@@ -1,10 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+
+import { MdEventNote } from 'react-icons/md';
 import { RiAccountPinBoxLine } from 'react-icons/ri';
 import { SiGooglehangoutsmeet, SiHomeassistant } from 'react-icons/si';
-import { MdEventNote } from 'react-icons/md';
 
 import Image from '../../assets/images/hncc.svg';
-import { useHistory } from 'react-router-dom';
 
 function Slider() {
   const history = useHistory();
