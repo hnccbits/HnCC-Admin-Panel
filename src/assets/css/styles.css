@@ -417,45 +417,4 @@ body {
   margin: 0 auto;
   height: 100vh;
 }
-.MemberContainer{
-  display:grid;
-  grid-template-columns: auto auto;
-  justify-content:center;
-  align-content:center;
-  background-color:#18191a;
-}
-.memberContainer .memberChild{
-  width:20vw;
-  height:40vh;
-  background-color:white;
-  margin:30px;
-  border-radius:10px;
-  padding:auto;
-  display:flex;
-  justify-content:center;
-  align-items: center;
-
-}
-.memberContainer .year{
-  width:60%;
-  height:60%;
-  background-color: #18191a;
-  padding:auto;
-  border-radius: 50%;
-  padding:auto;
-  display:flex;
-  justify-content:center;
-  align-items: center;
-
-}
-.memberContainer .memberChild .year .memberList{
-  text-align: center;
-  color:#fffffe;
-  font-size:larger;
-  line-height: 1.5rem;
-}
-.memberContainer .memberChild .year .memberList p{
-  
-  font-weight:bold;
-}
 
