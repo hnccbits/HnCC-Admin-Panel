@@ -1,0 +1,40 @@
+h1 {
+  text-align: center;
+  color: white;
+}
+.listContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+}
+.listChild {
+  margin: 10px;
+  background-color: #fffffe;
+  padding: 10px;
+}
+
+.content {
+  text-align: center;
+  color: #18191a;
+}
+.content a {
+  color: #b3dcec;
+  text-decoration: none;
+}
+.content h4 {
+  font-size: large;
+  font-family: sans-serif;
+}
+.content p {
+  font-family: sans-serif;
+  font-weight: lighter;
+}
+.content img {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+.content img:hover {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(0%);
+}
