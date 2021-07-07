@@ -193,7 +193,6 @@
   padding: 0.5rem 1rem;
   transition: 400ms ease-in-out;
   text-align: center;
-  overflow: hidden;
 }
 
 .rightSlider .element {
@@ -269,15 +268,24 @@
   margin-left: 0.5rem;
 }
 
-.rightSlider .element .notifications .card {
+.rightSlider .element .notifications .columns {
+  height: 23vh;
+  overflow-y: scroll;
+}
+
+.rightSlider .element .notifications .columns::-webkit-scrollbar {
+  display: none;
+}
+
+.rightSlider .element .notifications .columns .card {
   padding: 0.5rem 0;
 }
 
-.rightSlider .element .notifications .card p {
+.rightSlider .element .notifications .columns .card p {
   font-weight: 600;
 }
 
-.rightSlider .element .notifications .card h6 {
+.rightSlider .element .notifications .columns .card h6 {
   color: #889;
   margin-top: 0.5rem;
 }
@@ -306,7 +314,7 @@
   bottom: 5px;
   margin-top: 1rem;
   text-decoration: none;
-  color: skyblue;
+  color: #b3dcec;
   font-size: 1rem;
   font-weight: 300;
   left: 50%;
@@ -417,3 +425,4 @@ body {
   margin: 0 auto;
   height: 100vh;
 }
+

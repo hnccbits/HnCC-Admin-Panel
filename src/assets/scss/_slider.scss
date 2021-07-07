@@ -103,7 +103,6 @@
   padding: 0.5rem 1rem;
   transition: 400ms ease-in-out;
   text-align: center;
-  overflow: hidden;
 
   .element {
     text-align: left;
@@ -165,6 +164,7 @@
     }
     .notifications {
       margin-top: 1rem;
+
       .logo {
         display: flex;
         flex-direction: row;
@@ -174,14 +174,23 @@
         }
       }
 
-      .card {
-        padding: 0.5rem 0;
-        p {
-          font-weight: 600;
+      .columns {
+        height: 23vh;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+          display: none;
         }
-        h6 {
-          color: #889;
-          margin-top: 0.5rem;
+
+        .card {
+          padding: 0.5rem 0;
+          p {
+            font-weight: 600;
+          }
+          h6 {
+            color: #889;
+            margin-top: 0.5rem;
+          }
         }
       }
     }
