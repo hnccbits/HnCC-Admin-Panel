@@ -85,6 +85,50 @@
   color: #b0b3b8;
 }
 
+.memberContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-content: center;
+  background-color: #18191a;
+}
+
+.memberContainer .memberChild {
+  cursor: pointer;
+  width: 20vw;
+  height: 40vh;
+  background-color: white;
+  margin: 30px;
+  border-radius: 10px;
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.memberContainer .memberChild .year {
+  width: 60%;
+  height: 60%;
+  background-color: #18191a;
+  padding: auto;
+  border-radius: 50%;
+  padding: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.memberContainer .memberChild .year .memberList {
+  text-align: center;
+  color: #fffffe;
+  font-size: larger;
+  line-height: 1.5rem;
+}
+
+.memberContainer .memberChild .year .memberList .p {
+  font-weight: bold;
+}
+
 .slider {
   background-color: #18191a;
   height: 100vh;
@@ -314,7 +358,7 @@
   bottom: 5px;
   margin-top: 1rem;
   text-decoration: none;
-  color: #b3dcec;
+  color: #05384d;
   font-size: 1rem;
   font-weight: 300;
   left: 50%;
@@ -396,7 +440,7 @@
 
 .home .cardRow .card .detailRow .detailBox h6 {
   margin-top: 0.5rem;
-  color: #ccd;
+  color: black;
   font-size: 0.75rem;
   font-weight: 300;
 }
@@ -425,4 +469,4 @@ body {
   margin: 0 auto;
   height: 100vh;
 }
-
+/*# sourceMappingURL=styles.css.map */
