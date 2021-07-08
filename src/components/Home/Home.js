@@ -47,9 +47,7 @@ function Home() {
         console.log(err);
       });
 
-    await BackendApi.getMemberData(1).then((res) => {
-      console.log(res.data);
-    });
+    // await BackendApi.createPost(1);
   };
   return (
     <Screen>
