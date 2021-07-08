@@ -1,0 +1,43 @@
+.memberContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-content: center;
+  background-color: #18191a;
+
+  .memberChild {
+    cursor: pointer;
+    width: 20vw;
+    height: 40vh;
+    background-color: white;
+    margin: 30px;
+    border-radius: 10px;
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .year {
+      width: 60%;
+      height: 60%;
+      background-color: #18191a;
+      padding: auto;
+      border-radius: 50%;
+      padding: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .memberList {
+        text-align: center;
+        color: #fffffe;
+        font-size: larger;
+        line-height: 1.5rem;
+
+        .p {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
