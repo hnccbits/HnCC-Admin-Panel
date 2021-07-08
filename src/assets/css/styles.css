@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 .loginContainer {
   height: 100vh;
   width: 100%;
@@ -358,7 +358,7 @@
   bottom: 5px;
   margin-top: 1rem;
   text-decoration: none;
-  color: #b3dcec;
+  color: #05384d;
   font-size: 1rem;
   font-weight: 300;
   left: 50%;
@@ -440,7 +440,7 @@
 
 .home .cardRow .card .detailRow .detailBox h6 {
   margin-top: 0.5rem;
-  color: #ccd;
+  color: black;
   font-size: 0.75rem;
   font-weight: 300;
 }
@@ -469,3 +469,4 @@ body {
   margin: 0 auto;
   height: 100vh;
 }
+/*# sourceMappingURL=styles.css.map */
