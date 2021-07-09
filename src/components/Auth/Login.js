@@ -34,7 +34,7 @@ const Login = () => {
               placeholder="Enter username"
               onChange={(e) => setUsername(e.target.value)}
               autoFocus
-              autoComplete
+              autoComplete={'true'}
             />
           </div>
           <div className="input">
@@ -45,7 +45,7 @@ const Login = () => {
                 type={show ? 'text' : 'password'}
                 placeholder="Enter password"
                 onChange={(e) => setPassword(e.target.value)}
-                autoComplete
+                autoComplete={'true'}
               />
               {show ? (
                 <IoIosEye

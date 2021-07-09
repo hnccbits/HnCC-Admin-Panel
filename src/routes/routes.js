@@ -7,6 +7,8 @@ import Final from '../components/Member/Final';
 import Prefinal from '../components/Member/Prefinal';
 import Sophomores from '../components/Member/Sophomore';
 import Freshers from '../components/Member/Freshers';
+import Posts from '../components/Posts/Posts';
+import Profile from '../components/Member/Profile';
 
 const Routes = () => {
   return (
@@ -19,6 +21,8 @@ const Routes = () => {
         <Route exact path="/members/prefinal" component={Prefinal} />
         <Route exact path="/members/sophomores" component={Sophomores} />
         <Route exact path="/members/freshers" component={Freshers} />
+        <Route exact path="/posts" component={Posts} />
+        <Route exact path="/members/profile" component={Profile} />
       </Switch>
     </>
   );
