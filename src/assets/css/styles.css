@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .loginContainer {
   height: 100vh;
   width: 100%;
@@ -332,6 +332,58 @@
 .rightSlider .element .notifications .columns .card h6 {
   color: #889;
   margin-top: 0.5rem;
+}
+
+.memberList
+h1 {
+  text-align: center;
+  color: white;
+  margin: 15px 0;
+}
+
+.listContainer {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.listContainer .listChild {
+  margin: 50px;
+  background-color: #fffffe;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.listContainer .listChild .content {
+  text-align: center;
+  color: #18191a;
+  width: 20vw;
+  margin: 10px;
+}
+
+.listContainer .listChild .content a {
+  color: #b3dcec;
+  text-decoration: none;
+}
+
+.listContainer .listChild .content h3 {
+  padding: 10px 0;
+}
+
+.listContainer .listChild .content p {
+  margin-bottom: 10px;
+}
+
+.listContainer .listChild .content img {
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  filter: grayscale(0%);
+}
+
+.listContainer .listChild .content img:hover {
+  filter: grayscale(100%);
 }
 
 .home .cardRow {

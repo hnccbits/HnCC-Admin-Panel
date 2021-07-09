@@ -3,36 +3,53 @@ import Screen from '../Screen';
 
 export default function Sophomores() {
     return (
-        <Screen>
-        <div>
-          <h1>Sophomores</h1> 
-          <div className='list-container'>
-            <div className='list-child'>
+      <Screen>
+        <div className="memberList">
+          <h1 >Sophomores</h1> 
+          <div className='listContainer'>
+            <div className='listChild'>
               <Content
-               imageUrl=""
-               name="shiwani kumari"
-               batch="2k20, ECE"
+               imageUrl="https://hnccbits.com/images/team/2k19/Zeeshan%20Ashraf.jpg"
+               name="Zeeshan Ashraf"
+               batch="2k19, ECE"
                link=""/>
             </div>
-            <div className='list-child'>
+            <div className='listChild'>
               <Content
-               imageUrl=""
-               name="shiwani kumari"
-               batch="2k20, ECE"
+               imageUrl="https://hnccbits.com/images/team/2k19/Abhinav-IT.jpg"
+               name="Abhinav Kr Singh"
+               batch="2k19, IT"
                link=""/>
+            </div>
+            <div className='listChild'>
+              <Content
+               imageUrl="https://hnccbits.com/images/team/2k19/Anand.jpg"
+               name="Anand Kumar"
+               batch="2k19, ECE"
+               link=""/>
+            </div>
+            <div className='listChild'>
+              <Content
+               imageUrl="https://hnccbits.com/images/team/2k19/Shivam%20Kedia.jpg"
+               name="Shivam Kedia"
+               batch="2k19, IT"
+               link=""/>
+            </div>
+            <div className='listChild'>
+              <Content/>
             </div>
 
+          </div>
         </div>
-        </div>
-        </Screen>
+      </Screen>
     )
 }
 
   const Content = ({ imageUrl, name,batch,link }) => {
     return (
         <div className="content">
-            <img src={imageUrl} alt="profile-pic" style="width:100%"/>
-            <h4>{name}</h4>
+            <img src={imageUrl} alt="profile-pic"/>
+            <h3>{name}</h3>
             <p>{batch}</p>
             <a href={link}>View profile</a>
         </div>
