@@ -334,8 +334,7 @@
   margin-top: 0.5rem;
 }
 
-.memberList
-h1 {
+.memberList h1 {
   text-align: center;
   color: white;
   margin: 15px 0;
@@ -363,7 +362,7 @@ h1 {
 }
 
 .listContainer .listChild .content a {
-  color: #b3dcec;
+  color: #197194;
   text-decoration: none;
 }
 
