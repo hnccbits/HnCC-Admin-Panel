@@ -136,7 +136,7 @@
   border-radius: 0 1.5rem 1.5rem 0;
   transition: 400ms ease-in-out;
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
@@ -226,7 +226,7 @@
 }
 
 .rightSlider {
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: 0;
   color: #18191a;
@@ -334,8 +334,11 @@
   margin-top: 0.5rem;
 }
 
-.memberList
-h1 {
+.screen {
+  position: sticky;
+}
+
+.memberList h1 {
   text-align: center;
   color: white;
   margin: 15px 0;
@@ -343,27 +346,30 @@ h1 {
 
 .listContainer {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   justify-content: center;
   align-items: center;
+  width: 50vw;
+  margin: auto;
 }
 
 .listContainer .listChild {
-  margin: 50px;
+  margin: 20px;
   background-color: #fffffe;
   padding: 10px;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .listContainer .listChild .content {
   text-align: center;
   color: #18191a;
-  width: 20vw;
+  width: 15vw;
   margin: 10px;
 }
 
 .listContainer .listChild .content a {
-  color: #b3dcec;
+  color: #197194;
   text-decoration: none;
 }
 
@@ -375,9 +381,16 @@ h1 {
   margin-bottom: 10px;
 }
 
-.listContainer .listChild .content img {
+.listContainer .listChild .content .profile {
   width: 70%;
-  height: 70%;
+  padding: 2rem 0;
+  margin: auto;
+}
+
+.listContainer .listChild .content img {
+  width: 10em;
+  height: 10em;
+  object-fit: cover;
   border-radius: 10px;
   filter: grayscale(0%);
 }
