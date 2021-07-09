@@ -1,7 +1,6 @@
-import React from "react";
-import Screen from "../Screen";
-import { useHistory } from 'react-router-dom';
-
+import React from 'react';
+import Screen from '../Screen';
+import MemberContent from './MemberContent';
 
 export default function Sophomores() {
   return (
@@ -10,7 +9,7 @@ export default function Sophomores() {
         <h1>Sophomores</h1>
         <div className="listContainer">
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Zeeshan%20Ashraf.jpg"
               name="Zeeshan Ashraf"
               branch="ECE"
@@ -18,7 +17,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Abhinav-IT.jpg"
               name="Abhinav Kr Singh"
               branch="IT"
@@ -26,7 +25,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Anand.jpg"
               name="Anand Kumar"
               branch="ECE"
@@ -34,7 +33,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Shivam%20Kedia.jpg"
               name="Shivam Kedia"
               branch="IT"
@@ -42,7 +41,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Jayesh%20Kumar.jpg"
               name="Jayesh Kumar"
               branch="CSE"
@@ -50,7 +49,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Aamir.jpeg"
               name="Aamir Akhtar"
               branch="Chemical"
@@ -58,7 +57,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Abhinav-mech.jpg"
               name="Abhinav Kumar"
               branch="Mechanical"
@@ -66,7 +65,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Rishav%20Gupta.jpg"
               name="Rishav Gupta"
               branch="Electrical"
@@ -74,7 +73,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Prayanshu%20Singh.jpg"
               name="Prayanshu Singh"
               branch="ECE"
@@ -82,7 +81,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Riya%20Kumari.jpg"
               name="Riya Kumari"
               branch="CSE"
@@ -90,7 +89,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Anisha%20Murmu.jpg"
               name="Anisha Murmu
               "
@@ -99,7 +98,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Anjali%20Kumari.jpg"
               name="Anjali Kumari"
               branch="Chemical"
@@ -107,7 +106,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Sapna%20Kumari.jpg"
               name="Sapna Kumari"
               branch="ECE"
@@ -115,7 +114,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/N%20Harshita.jpg"
               name="N. Harshita"
               branch="CSE"
@@ -123,7 +122,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Himadri%20Pragya.jpeg"
               name="Himadri Pragya"
               branch="IT"
@@ -131,7 +130,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Rahul%20Kumar.jpg"
               name="Rahul Kr. Yadav"
               branch="CSE"
@@ -139,7 +138,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Abhinav-metal.jpg"
               name="Abhinav Kr. Singh"
               branch="Metal"
@@ -147,7 +146,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Amit%20Kr%20Verma.jpg"
               name="Amit Kumar"
               branch="Production"
@@ -155,7 +154,7 @@ export default function Sophomores() {
             />
           </div>
           <div className="listChild">
-            <Content
+            <MemberContent
               imageUrl="https://hnccbits.com/images/team/2k19/Piyush%20Gupta.jpg"
               name="Piyush Gupta"
               branch="CSE"
@@ -167,16 +166,3 @@ export default function Sophomores() {
     </Screen>
   );
 }
-
-const Content = ({ imageUrl, name, branch, link }) => {
-  const history = useHistory();
-  return (
-    <div className="content">
-      <div className="profile"><img src={imageUrl} alt="profile-pic" /></div>
-      <h3>{name}</h3>
-      <p>2k19 {branch}</p>
-      <a onClick={() => history.push('/members/Profile')} href={link}>View profile</a>
-    </div>
-  );
-};
-
