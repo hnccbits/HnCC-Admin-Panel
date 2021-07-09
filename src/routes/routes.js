@@ -23,6 +23,7 @@ const Routes = () => {
         <Route exact path="/members/freshers" component={Freshers} />
         <Route exact path="/posts" component={Posts} />
         <Route exact path="/members/profile" component={Profile} />
+        <Route exact path="/profile/:id" component={Profile} />
       </Switch>
     </>
   );

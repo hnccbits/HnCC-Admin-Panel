@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BackendApi from '../../api/BackendApi';
+import UsersApi from '../../api/Users';
 import Screen from '../Screen';
 
 export default function Final() {
@@ -10,7 +10,7 @@ export default function Final() {
   }, []);
 
   const initialLoad = async () => {
-    await BackendApi.getUserByYear(2017)
+    await UsersApi.getUserByYear(2017)
       .then(async (res) => {
         if (res.type === 'success') {
           setData(res.data);
