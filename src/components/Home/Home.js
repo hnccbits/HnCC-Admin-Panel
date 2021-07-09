@@ -4,26 +4,26 @@ import BackendApi from '../../api/BackendApi';
 import Screen from '../Screen';
 
 const getYearlyCount = (data) => {
-  const freshers = data.filter((item) => item.year === 2020).length;
-  const sophomore = data.filter((item) => item.year === 2019).length;
-  const prefinal = data.filter((item) => item.year === 2018).length;
   const final = data.filter((item) => item.year === 2017).length;
+  const freshers = data.filter((item) => item.year === 2020).length;
+  const prefinal = data.filter((item) => item.year === 2018).length;
+  const sophomore = data.filter((item) => item.year === 2019).length;
 
   const count = {
-    freshers,
-    sophomore,
-    prefinal,
     final,
+    freshers,
+    prefinal,
+    sophomore,
   };
   return count;
 };
 
 function Home() {
-  const [memberCount, setMemberCount] = useState(0);
-  const [freshersCount, setFreshersCount] = useState(0);
-  const [sophomoreCount, setSophomoreCount] = useState(0);
-  const [prefinalCount, setPrefinalCount] = useState(0);
   const [finalCount, setFinalCount] = useState(0);
+  const [freshersCount, setFreshersCount] = useState(0);
+  const [memberCount, setMemberCount] = useState(0);
+  const [prefinalCount, setPrefinalCount] = useState(0);
+  const [sophomoreCount, setSophomoreCount] = useState(0);
 
   useEffect(() => {
     initialLoad();
@@ -37,17 +37,17 @@ function Home() {
           const { freshers, sophomore, prefinal, final } = getYearlyCount(
             res.data
           );
+          setFinalCount(final);
           setFreshersCount(freshers);
           setSophomoreCount(sophomore);
           setPrefinalCount(prefinal);
-          setFinalCount(final);
         } else throw res;
       })
       .catch((err) => {
         console.log(err);
       });
 
-    // await BackendApi.getUserByYear(2019).then((res) => console.log(res)); testing
+    // await BackendApi.createPost(1);
   };
   return (
     <Screen>
@@ -110,6 +110,25 @@ function Home() {
 
 export default Home;
 
+const Card = ({ className, num, title, data, nav }) => {
+  return (
+    <div className={`card ${className}`}>
+      <Circle num={num} title={title} />
+      <DetailRow data={data} />
+      <Link to={`/${nav}`}>View More</Link>
+    </div>
+  );
+};
+
+const Circle = ({ num, title }) => {
+  return (
+    <div className="circle">
+      {num}
+      <p>{title}</p>
+    </div>
+  );
+};
+
 const ColumnMember = ({ data }) => {
   return (
     <div className="column">
@@ -139,11 +158,20 @@ const DetailBox = ({ num, title, nav, date = null }) => {
   );
 };
 
-const Circle = ({ num, title }) => {
+const DetailRow = ({ data }) => {
   return (
-    <div className="circle">
-      {num}
-      <p>{title}</p>
+    <div className="detailRow">
+      {data.map((item, index) => {
+        return (
+          <DetailBox
+            key={index}
+            num={item.title}
+            title={item.decp}
+            date={new Date().toLocaleDateString()}
+            nav={item.nav}
+          />
+        );
+      })}
     </div>
   );
 };
@@ -169,34 +197,6 @@ const DetailRowMember = ({
           { num: freshers, nav: 'members', title: 'Freshers' },
         ]}
       />
-    </div>
-  );
-};
-
-const DetailRow = ({ data }) => {
-  return (
-    <div className="detailRow">
-      {data.map((item, index) => {
-        return (
-          <DetailBox
-            key={index}
-            num={item.title}
-            title={item.decp}
-            date={new Date().toLocaleDateString()}
-            nav={item.nav}
-          />
-        );
-      })}
-    </div>
-  );
-};
-
-const Card = ({ className, num, title, data, nav }) => {
-  return (
-    <div className={`card ${className}`}>
-      <Circle num={num} title={title} />
-      <DetailRow data={data} />
-      <Link to={`/${nav}`}>View More</Link>
     </div>
   );
 };

@@ -130,9 +130,9 @@ function RightSlider() {
               <p>Latest Project</p>
             </div>
             <div className="columns">
-              {latestRepo.map((item) => {
+              {latestRepo.map((item, index) => {
                 return (
-                  <div className="card">
+                  <div key={index} className="card">
                     <h3>{item.name}</h3>
                     <p
                       style={{
