@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import BackendApi from '../../api/BackendApi';
+import PostsApi from '../../api/PostsApi';
 import PostCard from './PostCard';
 
 function Posts() {
@@ -10,7 +10,7 @@ function Posts() {
   }, []);
 
   const initialLoad = async () => {
-    await BackendApi.getAllPosts()
+    await PostsApi.getAllPosts()
       .then((res) => {
         if (res.type === 'success') {
           setPosts(res.data);

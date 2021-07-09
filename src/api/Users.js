@@ -52,7 +52,7 @@ const getUserData = async (id) => {
     .then(async (res) => {
       if (res.status === 200) {
         const data = await res.json();
-        responseData.data = data;
+        responseData.data = data[0];
         responseData.message = 'Successfully fetched the user from the server';
         responseData.type = 'success';
       } else if (res.status === 404) {
@@ -75,8 +75,8 @@ const getUserData = async (id) => {
   return responseData;
 };
 
-const getProfile = async (userId) => {
-  await fetch(`http://127.0.0.1:8000/api/user/profile/${userId}/`)
+const getProfile = async () => {
+  await fetch(`http://127.0.0.1:8000/api/user/profile/`)
     .then(async (res) => {
       if (res.status === 200) {
         const data = await res.json();

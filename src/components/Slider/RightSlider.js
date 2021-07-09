@@ -40,7 +40,6 @@ function RightSlider() {
       .then((res) => {
         if (res.type === 'success') {
           setLatestRepo(res.data);
-          console.log(res.data);
         } else throw res;
       })
       .catch((err) => {

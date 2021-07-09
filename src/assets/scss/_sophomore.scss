@@ -1,5 +1,5 @@
-.screen{
-  position:sticky;
+.screen {
+  position: sticky;
 }
 .memberList h1 {
   text-align: center;
@@ -11,8 +11,8 @@
   grid-template-columns: auto auto auto;
   justify-content: center;
   align-items: center;
-  width:50vw;
-  margin:auto;
+  width: 50vw;
+  margin: auto;
 
   .listChild {
     margin: 20px;
@@ -27,7 +27,7 @@
       width: 15vw;
       margin: 10px;
 
-      a {
+      p {
         color: rgb(25, 113, 148);
         text-decoration: none;
       }
@@ -37,21 +37,20 @@
       p {
         margin-bottom: 10px;
       }
-      .profile{
-      width:70%;
-      padding:2rem 0;
-      margin:auto;
+      .profile {
+        width: 70%;
+        padding: 2rem 0;
+        margin: auto;
       }
-         img {
-         width: 10em;
-         height:10em;
-        
-       
-         object-fit:cover;
-         border-radius: 10px;
-         -webkit-filter: grayscale(100%);
-         filter: grayscale(0%);
-        }
+      img {
+        width: 10em;
+        height: 10em;
+
+        object-fit: cover;
+        border-radius: 10px;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(0%);
+      }
       img:hover {
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);

@@ -1,36 +1,55 @@
-const key = 'authToken';
+export const accessauthKey = 'accessHnCCAmin';
+export const refreshauthKey = 'refreshHnCCAdmin';
+export const userData = 'userDataHnCCAdmin';
 
-const storeToken = async (authToken) => {
+const storeTokens = (accessToken, refreshToken, data) => {
   try {
-    localStorage.setItem(key, JSON.stringify(authToken));
+    localStorage.setItem(accessauthKey, accessToken);
+    localStorage.setItem(refreshauthKey, refreshToken);
+    localStorage.setItem(userData, data);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getToken = async () => {
+const getUserDataToken = () => {
   try {
-    return JSON.parse(localStorage.getItem(key));
+    return localStorage.getItem(userData);
   } catch (error) {
-    console.log('====================================');
     console.log(error);
-    console.log('====================================');
   }
 };
 
-const removeToken = async () => {
+const getRefreshToken = () => {
   try {
-    localStorage.removeItem(key);
+    return localStorage.getItem(refreshauthKey);
   } catch (error) {
-    console.log('====================================');
     console.log(error);
-    console.log('====================================');
   }
 };
 
-// eslint-disable-next-line
-export default {
+const getToken = () => {
+  try {
+    return localStorage.getItem(accessauthKey);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const removeToken = () => {
+  try {
+    localStorage.clear();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const storageTokens = {
   getToken,
-  storeToken,
+  storeTokens,
   removeToken,
+  getRefreshToken,
+  getUserDataToken,
 };
+
+export default storageTokens;
