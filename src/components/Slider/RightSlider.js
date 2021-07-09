@@ -4,7 +4,6 @@ import { AiFillGithub } from 'react-icons/ai';
 import { BiNetworkChart } from 'react-icons/bi';
 import { MdNotificationsActive } from 'react-icons/md';
 import GithubApi from '../../api/GithubApi';
-import BackendApi from '../../api/BackendApi';
 
 function RightSlider() {
   const [goBottom, setGoBottom] = useState(false);
@@ -47,9 +46,6 @@ function RightSlider() {
       .catch((err) => {
         console.log(err);
       });
-
-    const res = await BackendApi.getAllUsers();
-    console.log(res);
   };
 
   return (

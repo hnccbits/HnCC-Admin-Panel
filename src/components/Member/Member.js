@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Screen from '../Screen';
 import { useHistory } from 'react-router-dom';
-import BackendApi from '../../api/BackendApi';
+import UsersApi from '../../api/Users';
 
 const getYearlyCount = (data) => {
   const final = data.filter((item) => item.year === 2017).length;
@@ -31,7 +31,7 @@ function Member() {
   }, []);
 
   const initialLoad = async () => {
-    await BackendApi.getAllUsers()
+    await UsersApi.getAllUsers()
       .then((res) => {
         if (res.type === 'success') {
           const { freshers, sophomore, prefinal, final } = getYearlyCount(

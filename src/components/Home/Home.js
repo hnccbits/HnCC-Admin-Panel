@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import BackendApi from '../../api/BackendApi';
+import UsersApi from '../../api/Users';
+import Profile from '../Member/Profile';
 import Screen from '../Screen';
 
 const getYearlyCount = (data) => {
@@ -30,7 +31,7 @@ function Home() {
   }, []);
 
   const initialLoad = async () => {
-    await BackendApi.getAllUsers()
+    await UsersApi.getAllUsers()
       .then((res) => {
         if (res.type === 'success') {
           setMemberCount(res.data.length);
@@ -47,7 +48,9 @@ function Home() {
         console.log(err);
       });
 
-    // await BackendApi.createPost(1);
+    await UsersApi.getUserCodingProfile('zeeshan_2k1').then((res) => {
+      console.log(res);
+    });
   };
   return (
     <Screen>
@@ -116,6 +119,7 @@ const Card = ({ className, num, title, data, nav }) => {
       <Circle num={num} title={title} />
       <DetailRow data={data} />
       <Link to={`/${nav}`}>View More</Link>
+      <Profile id={1} />
     </div>
   );
 };
