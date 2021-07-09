@@ -1,5 +1,6 @@
 import React from 'react'
 import Screen from '../Screen';
+import { useHistory } from 'react-router-dom';
 
 export default function Sophomores() {
     return (
@@ -46,12 +47,13 @@ export default function Sophomores() {
 }
 
   const Content = ({ imageUrl, name,batch,link }) => {
+    const history = useHistory();
     return (
         <div className="content">
             <img src={imageUrl} alt="profile-pic"/>
             <h3>{name}</h3>
             <p>{batch}</p>
-            <a href={link}>View profile</a>
+            <a onClick={() => history.push('/members/Profile')} href={link}>View profile</a>
         </div>
     );
   };
