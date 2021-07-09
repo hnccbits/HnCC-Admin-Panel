@@ -169,7 +169,7 @@ export default function Sophomores() {
 const Content = ({ imageUrl, name, branch, link }) => {
   return (
     <div className="content">
-      <img src={imageUrl} alt="profile-pic" />
+      <div className="profile"><img src={imageUrl} alt="profile-pic" /></div>
       <h3>{name}</h3>
       <p>2k19 {branch}</p>
       <a href={link}>View profile</a>
