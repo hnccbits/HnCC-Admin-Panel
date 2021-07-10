@@ -368,7 +368,7 @@
   margin: 10px;
 }
 
-.listContainer .listChild .content a {
+.listContainer .listChild .content p {
   color: #197194;
   text-decoration: none;
 }
@@ -397,6 +397,11 @@
 
 .listContainer .listChild .content img:hover {
   filter: grayscale(100%);
+}
+
+.meet
+h1 {
+  color: white;
 }
 
 .home .cardRow {

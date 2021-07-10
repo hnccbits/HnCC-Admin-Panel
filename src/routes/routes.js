@@ -6,6 +6,7 @@ import Member from '../components/Member/Member';
 import Posts from '../components/Posts/Posts';
 import Profile from '../components/Member/Profile';
 import MemberByYear from '../components/Member/MemberByYear';
+import Meet from '../components/Meet/Meet'
 
 const Routes = () => {
   return (
@@ -18,6 +19,7 @@ const Routes = () => {
         <Route exact path="/members/profile" component={Profile} />
         <Route exact path="/members/:year" component={MemberByYear} />
         <Route exact path="/posts" component={Posts} />
+        <Route exact path="/meet" component={Meet} />
       </Switch>
     </>
   );
