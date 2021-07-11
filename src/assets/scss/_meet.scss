@@ -1,4 +1,51 @@
 .meet
       h1{
     color:white;
+    text-align: center;
      }
+     .meetContainer{
+       display:flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       padding:2rem 0;
+     
+       .meetChild{
+         background-color:white;
+         width: 60vw;
+         padding:2rem 0;
+         margin:1.5rem 0;
+         display:flex;
+         border-radius:10px;
+         align-items:center;
+         text-align: center;
+         justify-content: center;
+       
+         .meetNum{
+           border-radius: 50%;
+           background-color:#18191a;
+           color:white;
+           width:130px;
+           height:130px;
+           display: flex;
+           margin:auto;
+           align-items: center;
+           justify-content: center;
+           flex-direction: column;
+         }
+         .meetDetail{
+           display:flex;
+          
+           .detailBox{
+             margin:0 10rem;
+             h2{
+               padding:1rem 0 1rem 0;
+             }
+             p{
+               padding:1rem 0;
+             }
+           }
+          }
+         
+        }
+      }

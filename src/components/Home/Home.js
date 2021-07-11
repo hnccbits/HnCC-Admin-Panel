@@ -70,11 +70,11 @@ function Home() {
             title="Meets"
             num={33}
             data={[
-              { title: 'Last Meet', decp: 'Agenda of the meet', nav: 'meets' },
-              { title: 'New Meet', decp: 'Agenda of the meet', nav: 'meets' },
+              { title: 'Last Meet', decp: 'Agenda of the meet', nav: 'meet' },
+              { title: 'New Meet', decp: 'Agenda of the meet', nav: 'meet' },
             ]}
-            nav="meets"
-            className="meets"
+            nav="meet"
+            className="meet"
           />
           <Card
             title="Chapters"

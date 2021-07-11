@@ -85,6 +85,55 @@
   color: #b0b3b8;
 }
 
+form caption {
+  color: black;
+  text-align: center;
+  display: block;
+  font-size: 2em;
+  font-weight: bolder;
+  padding: 2rem 0;
+}
+
+form .row {
+  display: flex;
+}
+
+form .row .col-25 {
+  width: 25%;
+  padding-right: 20rem;
+}
+
+form .row .col-25 label {
+  padding: 7px 7px 7px 0;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+form .row .col-75 {
+  width: 75%;
+  margin-left: 19rem;
+}
+
+form .row .col-75 input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+form .row .submit {
+  background-color: #18191a;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: auto;
+  font-size: medium;
+}
+
 .memberContainer {
   display: grid;
   grid-template-columns: auto auto;
@@ -402,6 +451,56 @@
 .meet
 h1 {
   color: white;
+  text-align: center;
+}
+
+.meetContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.meetContainer .meetChild {
+  background-color: white;
+  width: 60vw;
+  padding: 2rem 0;
+  margin: 1.5rem 0;
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.meetContainer .meetChild .meetNum {
+  border-radius: 50%;
+  background-color: #18191a;
+  color: white;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.meetContainer .meetChild .meetDetail {
+  display: flex;
+}
+
+.meetContainer .meetChild .meetDetail .detailBox {
+  margin: 0 10rem;
+}
+
+.meetContainer .meetChild .meetDetail .detailBox h2 {
+  padding: 1rem 0 1rem 0;
+}
+
+.meetContainer .meetChild .meetDetail .detailBox p {
+  padding: 1rem 0;
 }
 
 .home .cardRow {

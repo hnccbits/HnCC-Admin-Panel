@@ -1,0 +1,51 @@
+form {
+  caption{
+      color:black;
+      text-align:center;
+      display: block;
+      font-size:2em;
+      font-weight: bolder;
+      padding:2rem 0;
+  }
+  .row {
+    display: flex;
+
+    .col-25 {
+      width: 25%;
+      padding-right: 20rem;
+
+      label {
+        padding: 7px 7px 7px 0;
+        display: inline-block;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+    
+    }
+
+    .col-75 {
+      width: 75%;
+      margin-left: 19rem;
+     
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+    }
+    .submit {
+         background-color:#18191a;
+         color: white;
+         padding: 12px 20px;
+         border: none;
+         border-radius: 4px;
+         cursor: pointer;
+         margin:auto;
+         font-size: medium;
+      }
+  }
+}
