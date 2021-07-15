@@ -27,61 +27,86 @@ export default class Form extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <caption>Create new meet</caption>
-        <div className="row">
-          <div className="col-25">
-            <label for="agenda">Agenda</label>
+        <div className="meetForm">
+          <div className="meetRow">
+            <div className="meetLabel">
+              <label for="title">Title</label>
+            </div>
+            <div className="meetInput">
+              <input
+                type="text"
+                value={this.state.text}
+                onChange={this.handleChange}
+                id="title"
+                placeholder="Title of the meet"
+              />
+            </div>
           </div>
-          <div className="col-75">
-            <input
-              type="text"
-              value={this.state.text}
-              onChange={this.handleChange}
-              id="agenda"
-              placeholder="agenda of the meet"
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-25">
-            <label for="date">Date</label>
-          </div>
-          <div className="col-75">
-            <input
-              type="date"
-              value={this.state.date}
-              onChange={this.handleChange}
-              id="date"
-            />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-25">
-            <label for="time">Time</label>
-          </div>
-          <div className="col-75">
-            <input
-              type="time"
-              value={this.state.time}
-              onChange={this.handleChange}
-              id="time"
-            />
+          <div className="meetRow">
+            <div className="meetLabel">
+              <label for="agenda">Agenda</label>
+            </div>
+            <div className="meetInput">
+              <input
+                type="text"
+                value={this.state.date}
+                onChange={this.handleChange}
+                id="agenda"
+                placeholder="Agenda of the meet"
+              />
+            </div>
           </div>
         </div>
-        <div className="row">
-          <div className="col-25">
-            <label for="meetlink">Link</label>
+        <div className="meetForm">
+          <div className="meetRow">
+            <div className="meetLabel">
+              <label for="meetLink">Meet Link</label>
+            </div>
+            <div className="meetInput">
+              <input
+                type="text"
+                value={this.state.time}
+                onChange={this.handleChange}
+                id="meetLink"
+                placeholder="Enter meet link"
+              />
+            </div>
           </div>
-          <div className="col-75">
-            <input
-              type="link"
-              value={this.state.link}
-              onChange={this.handleChange}
-              id="meetlink"
-            />
+
+          <div className="rowDate">
+            <div className="date">
+              <div className="col-label">
+                <label for="date">Date</label>
+              </div>
+              <div className="col-input">
+                <input
+                  type="date"
+                  value={this.state.link}
+                  onChange={this.handleChange}
+                  id="date"
+                  placeholder="Select"
+                />
+              </div>
+            </div>
+            <div className=" date">
+              <div className="col-label">
+                <label for="time">Time</label>
+              </div>
+              <div className="col-input">
+                <input
+                  type="time"
+                  value={this.state.link}
+                  onChange={this.handleChange}
+                  id="time"
+                  placeholder="Select"
+                  onfocus="(this.type='time')"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="row">
+        <div className="meetForm">
           <input className="submit" type="submit" value="Submit" />
         </div>
       </form>

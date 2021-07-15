@@ -1,51 +1,84 @@
 form {
-  caption{
-      color:black;
-      text-align:center;
-      display: block;
-      font-size:2em;
-      font-weight: bolder;
-      padding:2rem 0;
+  width: 100%;
+  padding: 0 2rem;
+  caption {
+    color: black;
+    text-align: left;
+    display: block;
+    font-size: 1.3rem;
+    font-weight: medium;
+    padding-bottom: 1.1em;
   }
-  .row {
+  .meetForm {
     display: flex;
-
-    .col-25 {
-      width: 25%;
-      padding-right: 20rem;
-
-      label {
-        padding: 7px 7px 7px 0;
-        display: inline-block;
-        font-weight: bold;
-        font-size: 1.2rem;
+    flex-direction: row;
+    .meetRow {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      .meetLabel {
+        text-align: left;
+        label {
+          font-weight: medium;
+          font-size: 1.1rem;
+        }
       }
-    
+
+      .meetInput {
+        text-align: left;
+        input {
+          width: 75%;
+          background-color: #ebe9e9;
+          height: 4rem;
+          margin: 1.5rem 0 2rem 0;
+          padding-left: 1.3rem;
+          border-radius: 5px;
+          color: #000;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 5px #ebe9e9;
+          font-weight: normal;
+          font-size: medium;
+        }
+      }
     }
-
-    .col-75 {
-      width: 75%;
-      margin-left: 19rem;
-     
-
-      input {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: vertical;
+    .rowDate {
+      display: flex;
+      .date {
+        width: 12.5rem;
+        .col-label {
+          text-align: left;
+          label {
+            font-weight: medium;
+            font-size: 1.1rem;
+          }
+        }
+        .col-input {
+          text-align: left;
+          input {
+            width: 90%;
+            background-color: #ebe9e9;
+            height: 4rem;
+            margin: 1.5rem 0 2rem 0;
+            padding: 0 1.1rem 0 1.3rem;
+            border-radius: 5px;
+            color: #000;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px #ebe9e9;
+            font-weight: normal;
+            font-size: medium;
+          }
+        }
       }
-      
     }
     .submit {
-         background-color:#18191a;
-         color: white;
-         padding: 12px 20px;
-         border: none;
-         border-radius: 4px;
-         cursor: pointer;
-         margin:auto;
-         font-size: medium;
-      }
+      background-color: #18191a;
+      color: white;
+      padding: 12px 50px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: large;
+      font-weight: medium;
+    }
   }
 }

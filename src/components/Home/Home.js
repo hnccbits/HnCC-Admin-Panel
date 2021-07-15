@@ -74,7 +74,7 @@ function Home() {
               { title: 'New Meet', decp: 'Agenda of the meet', nav: 'meet' },
             ]}
             nav="meet"
-            className="meet"
+            className="meets"
           />
           <Card
             title="Chapters"
