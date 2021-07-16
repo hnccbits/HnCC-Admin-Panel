@@ -55,6 +55,10 @@
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);
       }
+
+      .view_profile_link {
+        cursor: pointer;
+      }
     }
   }
 }

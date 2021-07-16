@@ -12,7 +12,12 @@ function MemberContent({ name, branch, imageUrl, year, id }) {
       <p>
         {year} {branch}
       </p>
-      <p onClick={() => history.push(`/members/${year}/${id}`)}>View profile</p>
+      <p
+        className="view_profile_link"
+        onClick={() => history.push(`/members/${year}/${id}`)}
+      >
+        View profile
+      </p>
     </div>
   );
 }

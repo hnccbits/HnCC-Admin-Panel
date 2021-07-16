@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import UsersApi from '../../api/Users';
-import Screen from '../Screen';
 import MemberContent from './MemberContent';
 
 const batchConverter = (year) => {
@@ -23,7 +22,6 @@ export default function MemberByYear(props) {
     const year = batchConverter(props.match.params.year);
     await UsersApi.getUserByYear(year)
       .then((res) => {
-        console.log(res);
         if (res.type === 'success') {
           setData(res.data);
         } else throw res;
@@ -33,25 +31,23 @@ export default function MemberByYear(props) {
       });
   };
   return (
-    <Screen>
-      <div className="memberList">
-        <h1>Sophomores</h1>
-        <div className="listContainer">
-          {data.map((item, index) => {
-            return (
-              <div key={index} className="listChild">
-                <MemberContent
-                  imageUrl={''}
-                  name={item.user_name}
-                  branch={item.user_name}
-                  id={item.id}
-                  year={item.year}
-                />
-              </div>
-            );
-          })}
-        </div>
+    <div className="memberList">
+      <h1>Sophomores</h1>
+      <div className="listContainer">
+        {data.map((item, index) => {
+          return (
+            <div key={index} className="listChild">
+              <MemberContent
+                imageUrl={''}
+                name={item.user_name}
+                branch={item.user_name}
+                id={item.id}
+                year={item.year}
+              />
+            </div>
+          );
+        })}
       </div>
-    </Screen>
+    </div>
   );
 }

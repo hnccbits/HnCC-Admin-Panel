@@ -1,26 +1,17 @@
-export const accessauthKey = 'accessHnCCAmin';
+export const accessauthKey = 'accessHnCCAdmin';
 export const refreshauthKey = 'refreshHnCCAdmin';
 export const userData = 'userDataHnCCAdmin';
 
-const storeTokens = (accessToken, refreshToken, data) => {
+export const storeTokens = (accessToken, refreshToken) => {
   try {
     localStorage.setItem(accessauthKey, accessToken);
     localStorage.setItem(refreshauthKey, refreshToken);
-    localStorage.setItem(userData, data);
   } catch (error) {
     console.log(error);
   }
 };
 
-const getUserDataToken = () => {
-  try {
-    return localStorage.getItem(userData);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const getRefreshToken = () => {
+export const getRefreshToken = () => {
   try {
     return localStorage.getItem(refreshauthKey);
   } catch (error) {
@@ -28,7 +19,7 @@ const getRefreshToken = () => {
   }
 };
 
-const getToken = () => {
+export const getToken = () => {
   try {
     return localStorage.getItem(accessauthKey);
   } catch (error) {
@@ -36,20 +27,10 @@ const getToken = () => {
   }
 };
 
-const removeToken = () => {
+export const removeToken = () => {
   try {
     localStorage.clear();
   } catch (error) {
     console.log(error);
   }
 };
-
-const storageTokens = {
-  getToken,
-  storeTokens,
-  removeToken,
-  getRefreshToken,
-  getUserDataToken,
-};
-
-export default storageTokens;

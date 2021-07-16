@@ -1,26 +1,18 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import Login from '../components/Auth/Login';
-import Home from '../components/Home/Home';
-import Member from '../components/Member/Member';
-import Posts from '../components/Posts/Posts';
-import Profile from '../components/Member/Profile';
-import MemberByYear from '../components/Member/MemberByYear';
+import React, { useContext } from 'react';
+import Screen from '../components/Screen';
+import AuthContext from '../context/Auth';
+import AppFlow from './AppFlow';
+import AuthFlow from './AuthFlow';
 
-const Routes = () => {
-  return (
-    <>
-      <Switch>
-        <Route exact path="/" component={Login}></Route>
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/members" component={Member} />
-        <Route exact path="/members/:year/:id" component={Profile} />
-        <Route exact path="/members/profile" component={Profile} />
-        <Route exact path="/members/:year" component={MemberByYear} />
-        <Route exact path="/posts" component={Posts} />
-      </Switch>
-    </>
+function Routes() {
+  const { loggedInUser } = useContext(AuthContext);
+  return loggedInUser ? (
+    <Screen>
+      <AppFlow />
+    </Screen>
+  ) : (
+    <AuthFlow />
   );
-};
+}
 
 export default Routes;

@@ -1,53 +1,64 @@
 import React, { useEffect, useState } from 'react';
+import { IoIosReturnLeft } from 'react-icons/io';
+import { useParams, useRouteMatch } from 'react-router-dom';
 import UsersApi from '../../api/Users';
+import ProfileDetailView from './ProfileDetailView';
+import { history } from '../../history';
 
-function Profile(props) {
-  const [user, setUser] = useState(null);
+// import ProfileEditView from './ProfileEditView';
+
+function Profile() {
+  const [user, setUser] = useState({});
+  const [edit, setEdit] = useState({});
+
+  const params = useParams();
+  const match = useRouteMatch();
 
   useEffect(() => {
+    let isSubscribed = true;
+    const initialLoad = async () => {
+      if (match.path === '/members/profile') {
+        await UsersApi.getProfile()
+          .then((res) => {
+            if (!isSubscribed) return;
+            if (res.type === 'success') {
+              setUser(res.data);
+            } else throw res;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        await UsersApi.getUserData(params.id)
+          .then((res) => {
+            if (!isSubscribed) return;
+            if (res.type === 'success') {
+              setUser(res.data);
+            } else throw res;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    };
     initialLoad();
 
-    // eslint-disable-next-line
-  }, []);
+    return () => (isSubscribed = false);
+  }, [match, params]);
 
-  const initialLoad = async () => {
-    if (props.match.path === '/members/profile') {
-      await UsersApi.getProfile()
-        .then((res) => {
-          console.log(res);
-          if (res.type === 'success') {
-            setUser(res.data);
-          } else throw res;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      await UsersApi.getUserData(props.match.params.id)
-        .then((res) => {
-          console.log(res);
-          if (res.type === 'success') {
-            setUser(res.data);
-          } else throw res;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
   return (
-    user && (
-      <div className="profile">
-        <div className="details">
-          <h1>{user.user ? user.user.user_name : 'Not available'}</h1>
-          <h1>{user.bio}</h1>
-          <h1>{user.user ? user.user.email : 'Not available'}</h1>
-          <h1>{user.github_username}</h1>
-          <h1>{user.expertise}</h1>
-          <h1>{user.user ? user.user.year : 'Not available'}</h1>
-        </div>
+    <div className="profile_page">
+      <div className="topbar">
+        <IoIosReturnLeft size={32} onClick={() => history.back()} />
+        {match.path === '/members/profile' && (
+          <h3 onClick={() => setEdit((e) => !e)}>
+            {' '}
+            {edit ? 'Edit' : 'Cancel'}{' '}
+          </h3>
+        )}
       </div>
-    )
+      <ProfileDetailView data={user} />
+    </div>
   );
 }
 

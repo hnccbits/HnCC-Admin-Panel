@@ -1,0 +1,197 @@
+.profile_page {
+  background-color: white;
+  padding: 2rem;
+  height: 100vh;
+  overflow-y: scroll;
+
+  .profile-edit-view {
+    background-color: $white;
+  }
+
+  .profile-detail-view {
+    .loading {
+      font-size: 2rem;
+      margin: 1.4rem auto;
+      color: #ccd;
+      font-weight: 400;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .header {
+      border-bottom: 2px solid rgba($color: #000000, $alpha: 0.2);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+
+      .header-detail-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        h4 {
+          flex: 0.12;
+          font-size: 1rem;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .body {
+      margin: 1.5rem 0 0;
+      .title {
+        margin: 1rem 0 0.5rem;
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+      .personal-detail {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .column {
+          flex: 0.4;
+          .detail {
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            svg {
+              margin-right: 0.5rem;
+            }
+
+            h6 {
+              margin-left: 0.5rem;
+              font-weight: 400;
+              color: $grey;
+            }
+          }
+        }
+      }
+
+      .platform-details {
+        a {
+          font-size: 1.2rem;
+          text-decoration: none;
+          color: black;
+          cursor: pointer;
+        }
+        .platform-detail-header {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 0.75rem;
+
+          .column {
+            flex: 0.4;
+            h5 {
+              font-size: 0.95rem;
+              font-weight: 400;
+              margin: 0.5rem 0;
+            }
+          }
+        }
+        .contest-list {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-end;
+          margin: 1rem 0;
+
+          .contest-info {
+            border: 1px solid rgba($color: #000000, $alpha: 0.2);
+            padding: 1rem 2rem;
+            margin-right: 1rem;
+
+            h3 {
+              font-weight: 400;
+              font-size: 1.2rem;
+              margin-bottom: 0.5rem;
+            }
+
+            h5 {
+              font-size: 0.85rem;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+      .platform-data-view {
+        text-align: center;
+        a {
+          cursor: pointer;
+        }
+        .lists {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-end;
+          overflow-x: scroll;
+          margin: 1rem 0;
+          text-align: left;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          div {
+            flex: 1;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            margin-right: 1rem;
+            min-height: 30%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            &:nth-last-child(1) {
+              margin-right: 0;
+            }
+
+            a {
+              text-decoration: none;
+              font-size: 1.2rem;
+              font-weight: 400;
+              margin-bottom: 0.5rem;
+            }
+            p {
+              white-space: pre-wrap;
+              text-overflow: unset;
+              margin: 1rem 0;
+              font-size: 1rem;
+            }
+            .lang {
+              font-size: 0.95rem;
+              font-weight: 300;
+            }
+
+            h5 {
+              font-size: 0.95rem;
+              font-weight: 400;
+              margin: 0.5rem 0;
+            }
+
+            h3 {
+              white-space: pre-wrap;
+              text-overflow: unset;
+              font-size: 1.2rem;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+  }
+}

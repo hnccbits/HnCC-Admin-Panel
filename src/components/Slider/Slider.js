@@ -17,7 +17,7 @@ function Slider() {
           <h3>HnCC Admin Panel</h3>
         </div>
         <div className="body">
-          <div onClick={() => history.push('/home')} className="element">
+          <div onClick={() => history.push('/')} className="element">
             <SiHomeassistant size={50} />
             <h5>Home</h5>
           </div>

@@ -1,78 +1,53 @@
 import React, { useState } from 'react';
-import { IoIosEye, IoIosEyeOff } from 'react-icons/io';
-import { Redirect } from 'react-router-dom';
+import AuthApi from '../../api/AuthApi';
+import { Input, Password } from '../Input';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
-  const [redirect, setRedirect] = useState(null);
+  const [username, setUsername] = useState('');
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!username && !password) {
       alert('Please enter username and password');
       return;
-    }
-    else if(!username)
-    {
+    } else if (!username) {
       alert('Please enter username');
       return;
-    }
-    else if(!password)
-    {
+    } else if (!password) {
       alert('Please enter password');
       return;
     }
-     else {
-      setRedirect('/home');
-    }
-  };
 
-  if (redirect) {
-    return <Redirect to="/home" />;
-  }
+    await AuthApi.login({ email: username, password: password });
+  };
 
   return (
     <div className="loginContainer">
       <div className="login">
         <h2 className="header">HnCC Admin Portal</h2>
         <form className="loginForm">
-          <div className="input">
-            <label>Username</label>
-            <input
-              value={username}
-              type="text"
-              placeholder="Enter username"
-              onChange={(e) => setUsername(e.target.value)}
-              autoFocus
-              autoComplete={'true'}
-            />
-          </div>
-          <div className="input">
-            <label>Password</label>
-            <div className="password">
-              <input
-                value={password}
-                type={show ? 'text' : 'password'}
-                placeholder="Enter password"
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete={'true'}
-              />
-              {show ? (
-                <IoIosEye
-                  color="#e4e6eb"
-                  size={24}
-                  onClick={() => setShow(!show)}
-                />
-              ) : (
-                <IoIosEyeOff
-                  color="#e4e6eb"
-                  size={24}
-                  onClick={() => setShow(!show)}
-                />
-              )}
-            </div>
-          </div>
+          <Input
+            label="Username"
+            autoComplete="true"
+            autoFocus
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder={'Enter username'}
+            type="email"
+            value={username}
+            required={true}
+          />
+          <Password
+            label="Password"
+            autoComplete="true"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            show={show}
+            setShow={setShow}
+            placeholder="Enter password"
+            type={show ? 'text' : 'password'}
+            required={true}
+          />
 
           <button
             onClick={(e) => {

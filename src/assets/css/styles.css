@@ -22,39 +22,6 @@
   color: #242526;
 }
 
-.loginContainer .login .input {
-  position: relative;
-  padding: 1rem 0.6rem;
-  border: 2px solid #e4e6eb;
-  margin: 2rem 0;
-  border-radius: 0.5rem;
-}
-
-.loginContainer .login .input label {
-  position: absolute;
-  top: -1rem;
-  background-color: #ffffff;
-  padding: 0 0.2rem;
-  font-size: 1.2rem;
-  font-weight: 300;
-  color: #b0b3b8;
-}
-
-.loginContainer .login .input input {
-  border: none;
-  font-size: 1rem;
-  margin: 0 auto;
-  width: 100%;
-  outline: none;
-}
-
-.loginContainer .login .input .password {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .loginContainer .login .login {
   padding: 0.65rem 0.85rem;
   border: none;
@@ -368,7 +335,7 @@
   margin: 10px;
 }
 
-.listContainer .listChild .content a {
+.listContainer .listChild .content p {
   color: #197194;
   text-decoration: none;
 }
@@ -397,6 +364,10 @@
 
 .listContainer .listChild .content img:hover {
   filter: grayscale(100%);
+}
+
+.listContainer .listChild .content .view_profile_link {
+  cursor: pointer;
 }
 
 .home .cardRow {
@@ -517,6 +488,244 @@
   width: 100px;
 }
 
+.input-glb {
+  position: relative;
+  padding: 1rem 0.6rem;
+  border: 2px solid #e4e6eb;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+}
+
+.input-glb label {
+  position: absolute;
+  top: -1rem;
+  background-color: #ffffff;
+  padding: 0 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #b0b3b8;
+}
+
+.input-glb input {
+  border: none;
+  font-size: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  outline: none;
+}
+
+.input-glb .password {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile_page {
+  background-color: white;
+  padding: 2rem;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.profile_page .profile-edit-view {
+  background-color: #ffffff;
+}
+
+.profile_page .profile-detail-view .loading {
+  font-size: 2rem;
+  margin: 1.4rem auto;
+  color: #ccd;
+  font-weight: 400;
+}
+
+.profile_page .profile-detail-view::-webkit-scrollbar {
+  display: none;
+}
+
+.profile_page .profile-detail-view .header {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile_page .profile-detail-view .header h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.profile_page .profile-detail-view .header .header-detail-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile_page .profile-detail-view .header .header-detail-box h4 {
+  flex: 0.12;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.profile_page .profile-detail-view .body {
+  margin: 1.5rem 0 0;
+}
+
+.profile_page .profile-detail-view .body .title {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.profile_page .profile-detail-view .body .personal-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile_page .profile-detail-view .body .personal-detail .column {
+  flex: 0.4;
+}
+
+.profile_page .profile-detail-view .body .personal-detail .column .detail {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile_page .profile-detail-view .body .personal-detail .column .detail svg {
+  margin-right: 0.5rem;
+}
+
+.profile_page .profile-detail-view .body .personal-detail .column .detail h6 {
+  margin-left: 0.5rem;
+  font-weight: 400;
+  color: #b0b3b8;
+}
+
+.profile_page .profile-detail-view .body .platform-details a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.profile_page .profile-detail-view .body .platform-details .platform-detail-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.profile_page .profile-detail-view .body .platform-details .platform-detail-header .column {
+  flex: 0.4;
+}
+
+.profile_page .profile-detail-view .body .platform-details .platform-detail-header .column h5 {
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+}
+
+.profile_page .profile-detail-view .body .platform-details .contest-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin: 1rem 0;
+}
+
+.profile_page .profile-detail-view .body .platform-details .contest-list .contest-info {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+}
+
+.profile_page .profile-detail-view .body .platform-details .contest-list .contest-info h3 {
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile_page .profile-detail-view .body .platform-details .contest-list .contest-info h5 {
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view {
+  text-align: center;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view a {
+  cursor: pointer;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  overflow-x: scroll;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists::-webkit-scrollbar {
+  display: none;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists div {
+  flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  margin-right: 1rem;
+  min-height: 30%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists div:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists div a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists div p {
+  white-space: pre-wrap;
+  text-overflow: unset;
+  margin: 1rem 0;
+  font-size: 1rem;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists div .lang {
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists div h5 {
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+}
+
+.profile_page .profile-detail-view .body .platform-data-view .lists div h3 {
+  white-space: pre-wrap;
+  text-overflow: unset;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -534,4 +743,3 @@ body {
   margin: 0 auto;
   height: 100vh;
 }
-/*# sourceMappingURL=styles.css.map */

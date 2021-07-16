@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Screen from '../Screen';
 import { useHistory } from 'react-router-dom';
 import UsersApi from '../../api/Users';
 
@@ -50,42 +49,40 @@ function Member() {
     // await BackendApi.createPost(1);
   };
   return (
-    <Screen>
-      <div className="memberContainer">
-        <div
-          onClick={() => history.push('/members/final')}
-          className="memberChild"
-        >
-          <div className="year">
-            <MemberList title="Final" num={finalCount} />
-          </div>
-        </div>
-        <div
-          onClick={() => history.push('/members/prefinal')}
-          className="memberChild"
-        >
-          <div className="year">
-            <MemberList title="Pre-Final" num={prefinalCount} />
-          </div>
-        </div>
-        <div
-          onClick={() => history.push('/members/sophomores')}
-          className="memberChild"
-        >
-          <div className="year">
-            <MemberList title="Sophomores" num={sophomoreCount} />
-          </div>
-        </div>
-        <div
-          onClick={() => history.push('/members/freshers')}
-          className="memberChild"
-        >
-          <div className="year">
-            <MemberList title="Freshers" num={freshersCount} />
-          </div>
+    <div className="memberContainer">
+      <div
+        onClick={() => history.push('/members/final')}
+        className="memberChild"
+      >
+        <div className="year">
+          <MemberList title="Final" num={finalCount} />
         </div>
       </div>
-    </Screen>
+      <div
+        onClick={() => history.push('/members/prefinal')}
+        className="memberChild"
+      >
+        <div className="year">
+          <MemberList title="Pre-Final" num={prefinalCount} />
+        </div>
+      </div>
+      <div
+        onClick={() => history.push('/members/sophomores')}
+        className="memberChild"
+      >
+        <div className="year">
+          <MemberList title="Sophomores" num={sophomoreCount} />
+        </div>
+      </div>
+      <div
+        onClick={() => history.push('/members/freshers')}
+        className="memberChild"
+      >
+        <div className="year">
+          <MemberList title="Freshers" num={freshersCount} />
+        </div>
+      </div>
+    </div>
   );
 }
 

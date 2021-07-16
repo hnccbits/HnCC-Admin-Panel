@@ -1,3 +1,5 @@
+import axiosInstance from './axios';
+
 let responseData = {
   data: null,
   message: 'API not called',
@@ -52,7 +54,7 @@ const getUserData = async (id) => {
     .then(async (res) => {
       if (res.status === 200) {
         const data = await res.json();
-        responseData.data = data[0];
+        responseData.data = data;
         responseData.message = 'Successfully fetched the user from the server';
         responseData.type = 'success';
       } else if (res.status === 404) {
@@ -76,7 +78,8 @@ const getUserData = async (id) => {
 };
 
 const getProfile = async () => {
-  await fetch(`http://127.0.0.1:8000/api/user/profile/`)
+  await axiosInstance
+    .get(`http://127.0.0.1:8000/api/user/profile/`)
     .then(async (res) => {
       if (res.status === 200) {
         const data = await res.json();

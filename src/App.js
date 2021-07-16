@@ -3,22 +3,15 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './routes/routes';
 import './assets/css/styles.css';
 import AuthContext from './context/Auth';
-import storageTokens from './context/storage';
+import { getToken } from './context/storage';
 
 const App = () => {
-  const [loggedInUser, setLoggedInUser] = useState(storageTokens.getToken());
+  const [loggedInUser, setLoggedInUser] = useState(getToken());
 
   useEffect(() => {
-    const ac = new AbortController();
-    checkStatus();
-
-    return () => ac.abort();
-  }, []);
-
-  const checkStatus = async () => {
-    const accessToken = storageTokens.getToken();
+    const accessToken = getToken();
     setLoggedInUser(accessToken);
-  };
+  }, []);
 
   return (
     <>

@@ -19,37 +19,6 @@
       color: $secondaryBlack;
     }
 
-    .input {
-      position: relative;
-      padding: 1rem 0.6rem;
-      border: 2px solid $greyWhite;
-      margin: 2rem 0;
-      border-radius: 0.5rem;
-
-      label {
-        position: absolute;
-        top: -1rem;
-        background-color: $white;
-        padding: 0 0.2rem;
-        font-size: $fontL;
-        font-weight: 300;
-        color: $grey;
-      }
-      input {
-        border: none;
-        font-size: 1rem;
-        margin: 0 auto;
-        width: 100%;
-        outline: none;
-      }
-      .password {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-
     .login {
       padding: 0.65rem 0.85rem;
       border: none;

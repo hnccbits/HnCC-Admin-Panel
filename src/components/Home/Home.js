@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UsersApi from '../../api/Users';
-import Screen from '../Screen';
 
 const getYearlyCount = (data) => {
   const final = data.filter((item) => item.year === 2017).length;
@@ -46,67 +45,61 @@ function Home() {
       .catch((err) => {
         console.log(err);
       });
-
-    await UsersApi.getProfile().then((res) => {
-      console.log(res);
-    });
   };
   return (
-    <Screen>
-      <div className="home">
-        <div className="cardRow">
-          <div className="card">
-            <Circle num={memberCount} title={'Members'} />
-            <DetailRowMember
-              final={finalCount}
-              prefinal={prefinalCount}
-              freshers={freshersCount}
-              sophomore={sophomoreCount}
-              className="memberRow"
-            />
-            <Link to="/members">View More</Link>
-          </div>
-          <Card
-            title="Meets"
-            num={33}
-            data={[
-              { title: 'Last Meet', decp: 'Agenda of the meet', nav: 'meets' },
-              { title: 'New Meet', decp: 'Agenda of the meet', nav: 'meets' },
-            ]}
-            nav="meets"
-            className="meets"
+    <div className="home">
+      <div className="cardRow">
+        <div className="card">
+          <Circle num={memberCount} title={'Members'} />
+          <DetailRowMember
+            final={finalCount}
+            prefinal={prefinalCount}
+            freshers={freshersCount}
+            sophomore={sophomoreCount}
+            className="memberRow"
           />
-          <Card
-            title="Chapters"
-            num={2}
-            data={[
-              { title: 'CodeChef', decp: 'Team Lead', nav: 'chapters' },
-              { title: 'GfG', decp: 'Team Lead', nav: 'chapters' },
-            ]}
-            nav="chapters"
-            className="chapters"
-          />
-          <Card
-            title="Events"
-            num={10}
-            data={[
-              {
-                title: 'Last Event',
-                decp: 'Agenda of the event',
-                nav: 'events',
-              },
-              {
-                title: 'New Event',
-                decp: 'Agenda of the event',
-                nav: 'events',
-              },
-            ]}
-            nav="events"
-            className="events"
-          />
+          <Link to="/members">View More</Link>
         </div>
+        <Card
+          title="Meets"
+          num={33}
+          data={[
+            { title: 'Last Meet', decp: 'Agenda of the meet', nav: 'meets' },
+            { title: 'New Meet', decp: 'Agenda of the meet', nav: 'meets' },
+          ]}
+          nav="meets"
+          className="meets"
+        />
+        <Card
+          title="Chapters"
+          num={2}
+          data={[
+            { title: 'CodeChef', decp: 'Team Lead', nav: 'chapters' },
+            { title: 'GfG', decp: 'Team Lead', nav: 'chapters' },
+          ]}
+          nav="chapters"
+          className="chapters"
+        />
+        <Card
+          title="Events"
+          num={10}
+          data={[
+            {
+              title: 'Last Event',
+              decp: 'Agenda of the event',
+              nav: 'events',
+            },
+            {
+              title: 'New Event',
+              decp: 'Agenda of the event',
+              nav: 'events',
+            },
+          ]}
+          nav="events"
+          className="events"
+        />
       </div>
-    </Screen>
+    </div>
   );
 }
 
