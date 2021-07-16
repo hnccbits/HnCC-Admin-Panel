@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosInstance from './axios';
 
 let responseData = {
   data: null,
@@ -50,8 +50,8 @@ const getPostDetail = async (id) => {
   return responseData;
 };
 const createPost = async (input) => {
-  await axios
-    .post('http://127.0.0.1:8000/api/posts', input)
+  await axiosInstance
+    .post('/posts', input)
     .then((res) => {
       if (res.status === 201) {
         responseData.data = null;

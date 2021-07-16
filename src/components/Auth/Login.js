@@ -19,7 +19,7 @@ const Login = () => {
       return;
     }
 
-    await AuthApi.login({ email: username, password: password });
+    await AuthApi.login({ email: username.trim(), password: password.trim() });
   };
 
   return (

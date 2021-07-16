@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {
   getRefreshToken,
   getToken,
@@ -9,16 +8,23 @@ import { history } from '../history';
 import axiosInstance from './axios';
 
 const login = async (data) => {
-  axiosInstance.post('/token', data).then((res) => {
-    storeTokens(res.data.access, res.data.refresh);
-    axiosInstance.defaults.headers['Authorization'] = getToken();
-    history.push('/');
-  });
+  await axiosInstance
+    .post('/token', data)
+    .then((res) => {
+      if (res.status === 200) {
+        storeTokens(res.data.access, res.data.refresh);
+        axiosInstance.defaults.headers['Authorization'] = getToken();
+        history.push('/');
+      } else throw res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 const logout = async () => {
-  await axios
-    .post('http://127.0.0.1:8000/api/user/logout/blacklist/', getRefreshToken())
+  await axiosInstance
+    .post('/user/logout/blacklist/', getRefreshToken())
     .then((res) => {
       if (res.status === 200) {
         removeToken();

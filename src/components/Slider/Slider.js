@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { AiOutlineNotification } from 'react-icons/ai';
 import { MdEventNote } from 'react-icons/md';
 import { RiAccountPinBoxLine } from 'react-icons/ri';
 import { SiGooglehangoutsmeet, SiHomeassistant } from 'react-icons/si';
@@ -32,6 +33,10 @@ function Slider() {
           <div onClick={() => history.push('/events')} className="element">
             <MdEventNote size={50} />
             <h5>Events</h5>
+          </div>
+          <div onClick={() => history.push('/posts')} className="element">
+            <AiOutlineNotification size={50} />
+            <h5>Posts</h5>
           </div>
         </div>
         <div className="footer">

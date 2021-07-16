@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 .loginContainer {
   height: 100vh;
   width: 100%;
@@ -52,45 +52,48 @@
   color: #b0b3b8;
 }
 
-form {
-  width: 100%;
+.form_container {
   padding: 0 2rem;
 }
 
-form caption {
+.form_container h3 {
   color: black;
   text-align: left;
   display: block;
   font-size: 1.3rem;
-  font-weight: medium;
   padding-bottom: 1.1em;
+  font-weight: 500;
 }
 
-form .meetForm {
+.form_container form {
+  width: 100%;
+}
+
+.form_container form .meetForm {
   display: flex;
   flex-direction: row;
 }
 
-form .meetForm .meetRow {
+.form_container form .meetForm .meetRow {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-form .meetForm .meetRow .meetLabel {
+.form_container form .meetForm .meetRow .meetLabel {
   text-align: left;
 }
 
-form .meetForm .meetRow .meetLabel label {
+.form_container form .meetForm .meetRow .meetLabel label {
   font-weight: medium;
   font-size: 1.1rem;
 }
 
-form .meetForm .meetRow .meetInput {
+.form_container form .meetForm .meetRow .meetInput {
   text-align: left;
 }
 
-form .meetForm .meetRow .meetInput input {
+.form_container form .meetForm .meetRow .meetInput input {
   width: 75%;
   background-color: #ebe9e9;
   height: 4rem;
@@ -104,28 +107,28 @@ form .meetForm .meetRow .meetInput input {
   font-size: medium;
 }
 
-form .meetForm .rowDate {
+.form_container form .meetForm .rowDate {
   display: flex;
 }
 
-form .meetForm .rowDate .date {
+.form_container form .meetForm .rowDate .date {
   width: 12.5rem;
 }
 
-form .meetForm .rowDate .date .col-label {
+.form_container form .meetForm .rowDate .date .col-label {
   text-align: left;
 }
 
-form .meetForm .rowDate .date .col-label label {
+.form_container form .meetForm .rowDate .date .col-label label {
   font-weight: medium;
   font-size: 1.1rem;
 }
 
-form .meetForm .rowDate .date .col-input {
+.form_container form .meetForm .rowDate .date .col-input {
   text-align: left;
 }
 
-form .meetForm .rowDate .date .col-input input {
+.form_container form .meetForm .rowDate .date .col-input input {
   width: 90%;
   background-color: #ebe9e9;
   height: 4rem;
@@ -139,7 +142,7 @@ form .meetForm .rowDate .date .col-input input {
   font-size: medium;
 }
 
-form .meetForm .submit {
+.form_container form .meetForm .submit {
   background-color: #18191a;
   color: white;
   padding: 12px 50px;
@@ -467,6 +470,7 @@ form .meetForm .submit {
 .listContainer .listChild .content .view_profile_link {
   cursor: pointer;
 }
+
 .meet {
   background-color: #fff;
   padding: 2rem;
@@ -658,6 +662,10 @@ form .meetForm .submit {
   outline: none;
 }
 
+.input-glb input::-webkit-autofill {
+  background-color: red !important;
+}
+
 .input-glb .password {
   display: flex;
   flex-direction: row;
@@ -665,11 +673,23 @@ form .meetForm .submit {
   align-items: center;
 }
 
+.input-glb .password input:not(:empty) {
+  background-color: red;
+}
+
 .profile_page {
   background-color: white;
   padding: 2rem;
   height: 100vh;
   overflow-y: scroll;
+}
+
+.profile_page::-webkit-scrollbar {
+  display: none;
+}
+
+.profile_page .topbar svg {
+  cursor: pointer;
 }
 
 .profile_page .profile-edit-view {
@@ -681,10 +701,6 @@ form .meetForm .submit {
   margin: 1.4rem auto;
   color: #ccd;
   font-weight: 400;
-}
-
-.profile_page .profile-detail-view::-webkit-scrollbar {
-  display: none;
 }
 
 .profile_page .profile-detail-view .header {
@@ -757,11 +773,7 @@ form .meetForm .submit {
   cursor: pointer;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-details
-  .platform-detail-header {
+.profile_page .profile-detail-view .body .platform-details .platform-detail-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -769,22 +781,11 @@ form .meetForm .submit {
   margin-top: 0.75rem;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-details
-  .platform-detail-header
-  .column {
+.profile_page .profile-detail-view .body .platform-details .platform-detail-header .column {
   flex: 0.4;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-details
-  .platform-detail-header
-  .column
-  h5 {
+.profile_page .profile-detail-view .body .platform-details .platform-detail-header .column h5 {
   font-size: 0.95rem;
   font-weight: 400;
   margin: 0.5rem 0;
@@ -798,36 +799,19 @@ form .meetForm .submit {
   margin: 1rem 0;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-details
-  .contest-list
-  .contest-info {
+.profile_page .profile-detail-view .body .platform-details .contest-list .contest-info {
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1rem 2rem;
   margin-right: 1rem;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-details
-  .contest-list
-  .contest-info
-  h3 {
+.profile_page .profile-detail-view .body .platform-details .contest-list .contest-info h3 {
   font-weight: 400;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-details
-  .contest-list
-  .contest-info
-  h5 {
+.profile_page .profile-detail-view .body .platform-details .contest-list .contest-info h5 {
   font-size: 0.85rem;
   font-weight: 400;
 }
@@ -850,11 +834,7 @@ form .meetForm .submit {
   text-align: left;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-data-view
-  .lists::-webkit-scrollbar {
+.profile_page .profile-detail-view .body .platform-data-view .lists::-webkit-scrollbar {
   display: none;
 }
 
@@ -870,12 +850,7 @@ form .meetForm .submit {
   white-space: nowrap;
 }
 
-.profile_page
-  .profile-detail-view
-  .body
-  .platform-data-view
-  .lists
-  div:nth-last-child(1) {
+.profile_page .profile-detail-view .body .platform-data-view .lists div:nth-last-child(1) {
   margin-right: 0;
 }
 
@@ -927,4 +902,11 @@ body {
   width: 68%;
   margin: 0 auto;
   height: 100vh;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
 }

@@ -4,6 +4,16 @@
   height: 100vh;
   overflow-y: scroll;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .topbar {
+    svg {
+      cursor: pointer;
+    }
+  }
+
   .profile-edit-view {
     background-color: $white;
   }
@@ -14,10 +24,6 @@
       margin: 1.4rem auto;
       color: #ccd;
       font-weight: 400;
-    }
-
-    &::-webkit-scrollbar {
-      display: none;
     }
 
     .header {

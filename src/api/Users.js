@@ -79,11 +79,10 @@ const getUserData = async (id) => {
 
 const getProfile = async () => {
   await axiosInstance
-    .get(`http://127.0.0.1:8000/api/user/profile/`)
+    .get(`/profile/`)
     .then(async (res) => {
       if (res.status === 200) {
-        const data = await res.json();
-        responseData.data = data[0];
+        responseData.data = res.data;
         responseData.message =
           'Successfully fetched the your info from the server';
         responseData.type = 'success';

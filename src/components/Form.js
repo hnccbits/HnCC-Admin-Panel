@@ -1,58 +1,70 @@
-import React from "react";
+import React, { useState } from 'react';
+import { createMeet } from '../api/Meets';
 
-export default class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: "" };
-    this.state = { date: "" };
-    this.state = { time: "" };
-    this.state = { link: "" };
+const DATE = `${new Date().getFullYear()}-${
+  new Date().getUTCMonth() + 1 ? '0' : ''
+}${new Date().getUTCMonth() + 1}-${new Date().getDate()}`;
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const Form = () => {
+  const [title, setTitle] = useState('');
+  const [date, setDate] = useState(DATE);
+  const [time, setTime] = useState();
+  const [agenda, setAgenda] = useState('');
+  const [link, setLink] = useState('');
 
-  handleChange(event) {
-    this.setState({ text: event.target.text });
-    this.setState({ date: event.target.date });
-    this.setState({ time: event.target.time });
-    this.setState({ link: event.target.link });
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await createMeet({
+      agenda: agenda.trim(),
+      intiated_by: 1,
+      link: link.trim(),
+    })
+      .then((res) => {
+        if (res.type === 'success') setDate(res.data);
+        else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <caption>Create new meet</caption>
+    setDate(DATE);
+    setLink('');
+    setTitle('');
+    setAgenda('');
+    setTime();
+  };
+  return (
+    <section className="form_container">
+      <h3>Create new meet</h3>
+      <form>
         <div className="meetForm">
           <div className="meetRow">
             <div className="meetLabel">
-              <label for="title">Title</label>
+              <label>Title</label>
             </div>
             <div className="meetInput">
               <input
                 type="text"
-                value={this.state.text}
-                onChange={this.handleChange}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
                 id="title"
                 placeholder="Title of the meet"
+                required
               />
             </div>
           </div>
           <div className="meetRow">
             <div className="meetLabel">
-              <label for="agenda">Agenda</label>
+              <label>Agenda</label>
             </div>
             <div className="meetInput">
               <input
                 type="text"
-                value={this.state.date}
-                onChange={this.handleChange}
+                value={agenda}
+                onChange={(e) => setAgenda(e.target.value)}
                 id="agenda"
                 placeholder="Agenda of the meet"
+                required
               />
             </div>
           </div>
@@ -60,15 +72,16 @@ export default class Form extends React.Component {
         <div className="meetForm">
           <div className="meetRow">
             <div className="meetLabel">
-              <label for="meetLink">Meet Link</label>
+              <label>Meet Link</label>
             </div>
             <div className="meetInput">
               <input
                 type="text"
-                value={this.state.time}
-                onChange={this.handleChange}
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
                 id="meetLink"
                 placeholder="Enter meet link"
+                required
               />
             </div>
           </div>
@@ -76,40 +89,48 @@ export default class Form extends React.Component {
           <div className="rowDate">
             <div className="date">
               <div className="col-label">
-                <label for="date">Date</label>
+                <label>Date</label>
               </div>
               <div className="col-input">
                 <input
                   type="date"
-                  value={this.state.link}
-                  onChange={this.handleChange}
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                   id="date"
                   placeholder="Select"
+                  min={DATE}
+                  required
                 />
               </div>
             </div>
-            <div className=" date">
+            <div className="date">
               <div className="col-label">
-                <label for="time">Time</label>
+                <label>Time</label>
               </div>
               <div className="col-input">
                 <input
                   type="time"
-                  value={this.state.link}
-                  onChange={this.handleChange}
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
                   id="time"
                   placeholder="Select"
-                  onfocus="(this.type='time')"
+                  required
                 />
               </div>
             </div>
           </div>
         </div>
-
         <div className="meetForm">
-          <input className="submit" type="submit" value="Submit" />
+          <input
+            onClick={(e) => handleSubmit(e)}
+            className="submit"
+            type="submit"
+            value="Submit"
+          />
         </div>
       </form>
-    );
-  }
-}
+    </section>
+  );
+};
+
+export default Form;

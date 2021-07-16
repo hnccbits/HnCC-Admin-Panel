@@ -1,15 +1,34 @@
-import React from "react";
-import Screen from "../Screen";
-import Form from "../Form";
+import React, { useEffect, useState } from 'react';
+import Form from '../Form';
+import { getAllMeets } from '../../api/Meets';
 
 export default function Meet() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    const initialLoad = async () => {
+      await getAllMeets()
+        .then((res) => {
+          console.log(res);
+          if (!isSubscribed) return;
+          if (res.type === 'success') setData(res.data);
+          else throw res;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    initialLoad();
+  }, []);
   return (
-    <Screen>
-      <div className="meet">
-        <Form />
-        <div className="meetList">
-          <p>Meet list</p>
-          <table>
+    <div className="meet">
+      <Form />
+      <div className="meetList">
+        <p>Meet list</p>
+        <table>
+          <thead>
             <tr>
               <th>ID</th>
               <th>Title</th>
@@ -18,29 +37,26 @@ export default function Meet() {
               <th>Time</th>
               <th>Attendance</th>
             </tr>
+          </thead>
 
-            <Table
-              id="1"
-              title="Title of the meet"
-              agenda="Agenda of the meet"
-              date="12 July, 2021"
-              time="10:00 pm"
-            />
-          </table>
-        </div>
+          <tbody>
+            {data.map((item, index) => {
+              return <TableRow data={item} key={index} />;
+            })}
+          </tbody>
+        </table>
       </div>
-    </Screen>
+    </div>
   );
 }
-
-const Table = ({ id, title, agenda, date, time }) => {
+const TableRow = ({ data }) => {
   return (
     <tr>
-      <td>{id}</td>
-      <td>{title}</td>
-      <td>{agenda}</td>
-      <td> {date}</td>
-      <td>{time} </td>
+      <td>{data.intiated_by}</td>
+      <td>Title</td>
+      <td>{data.agenda}</td>
+      <td> {new Date().toLocaleDateString()}</td>
+      <td>{new Date().toLocaleTimeString()} </td>
       <td>
         <button>See details</button>
       </td>

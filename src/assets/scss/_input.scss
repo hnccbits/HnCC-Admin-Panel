@@ -20,11 +20,21 @@
     margin: 0 auto;
     width: 100%;
     outline: none;
+
+    &::-webkit-autofill {
+      background-color: red !important;
+    }
   }
   .password {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    input {
+      &:not(:empty) {
+        background-color: red;
+      }
+    }
   }
 }
