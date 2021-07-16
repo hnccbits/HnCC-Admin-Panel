@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import BackendApi from '../../api/BackendApi';
+import UsersApi from '../../api/Users';
 import Screen from '../Screen';
 
 const getYearlyCount = (data) => {
@@ -30,7 +30,7 @@ function Home() {
   }, []);
 
   const initialLoad = async () => {
-    await BackendApi.getAllUsers()
+    await UsersApi.getAllUsers()
       .then((res) => {
         if (res.type === 'success') {
           setMemberCount(res.data.length);
@@ -47,7 +47,9 @@ function Home() {
         console.log(err);
       });
 
-    // await BackendApi.createPost(1);
+    await UsersApi.getProfile().then((res) => {
+      console.log(res);
+    });
   };
   return (
     <Screen>
@@ -68,10 +70,10 @@ function Home() {
             title="Meets"
             num={33}
             data={[
-              { title: 'Last Meet', decp: 'Agenda of the meet', nav: 'meets' },
-              { title: 'New Meet', decp: 'Agenda of the meet', nav: 'meets' },
+              { title: 'Last Meet', decp: 'Agenda of the meet', nav: 'meet' },
+              { title: 'New Meet', decp: 'Agenda of the meet', nav: 'meet' },
             ]}
-            nav="meets"
+            nav="meet"
             className="meets"
           />
           <Card

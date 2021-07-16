@@ -9,10 +9,21 @@ const Login = () => {
   const [redirect, setRedirect] = useState(null);
 
   const handleLogin = () => {
-    if (!username || !password) {
+    if (!username && !password) {
       alert('Please enter username and password');
       return;
-    } else {
+    }
+    else if(!username)
+    {
+      alert('Please enter username');
+      return;
+    }
+    else if(!password)
+    {
+      alert('Please enter password');
+      return;
+    }
+     else {
       setRedirect('/home');
     }
   };

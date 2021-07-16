@@ -25,7 +25,7 @@ function Slider() {
             <RiAccountPinBoxLine size={50} />
             <h5>Member</h5>
           </div>
-          <div onClick={() => history.push('/meets')} className="element">
+          <div onClick={() => history.push('/meet')} className="element">
             <SiGooglehangoutsmeet size={50} />
             <h5>Meets</h5>
           </div>

@@ -85,6 +85,104 @@
   color: #b0b3b8;
 }
 
+form {
+  width: 100%;
+  padding: 0 2rem;
+}
+
+form caption {
+  color: black;
+  text-align: left;
+  display: block;
+  font-size: 1.3rem;
+  font-weight: medium;
+  padding-bottom: 1.1em;
+}
+
+form .meetForm {
+  display: flex;
+  flex-direction: row;
+}
+
+form .meetForm .meetRow {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+form .meetForm .meetRow .meetLabel {
+  text-align: left;
+}
+
+form .meetForm .meetRow .meetLabel label {
+  font-weight: medium;
+  font-size: 1.1rem;
+}
+
+form .meetForm .meetRow .meetInput {
+  text-align: left;
+}
+
+form .meetForm .meetRow .meetInput input {
+  width: 75%;
+  background-color: #ebe9e9;
+  height: 4rem;
+  margin: 1.5rem 0 2rem 0;
+  padding-left: 1.3rem;
+  border-radius: 5px;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px #ebe9e9;
+  font-weight: normal;
+  font-size: medium;
+}
+
+form .meetForm .rowDate {
+  display: flex;
+}
+
+form .meetForm .rowDate .date {
+  width: 12.5rem;
+}
+
+form .meetForm .rowDate .date .col-label {
+  text-align: left;
+}
+
+form .meetForm .rowDate .date .col-label label {
+  font-weight: medium;
+  font-size: 1.1rem;
+}
+
+form .meetForm .rowDate .date .col-input {
+  text-align: left;
+}
+
+form .meetForm .rowDate .date .col-input input {
+  width: 90%;
+  background-color: #ebe9e9;
+  height: 4rem;
+  margin: 1.5rem 0 2rem 0;
+  padding: 0 1.1rem 0 1.3rem;
+  border-radius: 5px;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px #ebe9e9;
+  font-weight: normal;
+  font-size: medium;
+}
+
+form .meetForm .submit {
+  background-color: #18191a;
+  color: white;
+  padding: 12px 50px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: large;
+  font-weight: medium;
+}
+
 .memberContainer {
   display: grid;
   grid-template-columns: auto auto;
@@ -368,7 +466,7 @@
   margin: 10px;
 }
 
-.listContainer .listChild .content a {
+.listContainer .listChild .content p {
   color: #197194;
   text-decoration: none;
 }
@@ -397,6 +495,53 @@
 
 .listContainer .listChild .content img:hover {
   filter: grayscale(100%);
+}
+
+.meet {
+  background-color: #fff;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.meet .meetList {
+  padding: 2rem;
+}
+
+.meet .meetList p {
+  font-weight: medium;
+  font-size: 1.3rem;
+}
+
+.meet .meetList table {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-collapse: collapse;
+}
+
+.meet .meetList table tr {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.meet .meetList table tr th {
+  background-color: #ebe9e9;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #b0b3b8;
+}
+
+.meet .meetList table tr td {
+  text-align: center;
+  padding: 1.1rem 0;
+  color: #b0b3b8;
+  border-bottom: 1px solid #b0b3b8;
+}
+
+.meet .meetList table tr td button {
+  background-color: #18191a;
+  padding: 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
 }
 
 .home .cardRow {
