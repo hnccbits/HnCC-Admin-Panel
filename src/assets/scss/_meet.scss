@@ -1,8 +1,8 @@
-.meet {
+.page__form_listing {
   background-color: #fff;
   padding: 2rem;
   margin: 2rem 0;
-  .meetList {
+  .data_table {
     padding: 2rem;
     p {
       font-weight: medium;
@@ -14,24 +14,20 @@
       border-collapse: collapse;
 
       tr {
-       
         padding-top: 12px;
         padding-bottom: 12px;
-      
-      
+
         th {
           background-color: #ebe9e9;
           padding: 1.5rem 0;
           border-bottom: 1px solid $grey;
-          
         }
         td {
           text-align: center;
           padding: 1.1rem 0;
           color: $grey;
           border-bottom: 1px solid $grey;
-       
-          
+
           button {
             background-color: $black;
             padding: 12px;

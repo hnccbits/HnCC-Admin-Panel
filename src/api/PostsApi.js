@@ -29,11 +29,11 @@ const getAllPosts = async () => {
 };
 
 const getPostDetail = async (id) => {
-  await fetch(`http://127.0.0.1:8000/api/posts/${id}`)
+  await axiosInstance
+    .get(`/post/${id}`)
     .then(async (res) => {
       if (res.status === 200) {
-        const data = await res.json();
-        responseData.data = data;
+        responseData.data = res.data;
         responseData.message = 'Successfully fetched the post.';
         responseData.type = 'errro';
       } else throw res;

@@ -55,3 +55,29 @@ export const Password = ({
     </div>
   );
 };
+
+export function FormInput({ label, ...otherProps }) {
+  return (
+    <div className="meetRow">
+      <div className="meetLabel">
+        <label>{label}</label>
+      </div>
+      <div className="meetInput">
+        <input {...otherProps} />
+      </div>
+    </div>
+  );
+}
+
+export function DateTimePicker({ label, ...otherProps }) {
+  return (
+    <div className="date">
+      <div className="col-label">
+        <label>{label}</label>
+      </div>
+      <div className="col-input">
+        <input {...otherProps} />
+      </div>
+    </div>
+  );
+}

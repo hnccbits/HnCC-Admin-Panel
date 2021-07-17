@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Form from '../Form';
-import { getAllMeets } from '../../api/Meets';
+import MeetForm from './MeetForm';
+import { createMeet, getAllMeets } from '../../api/Meets';
 
 export default function Meet() {
   const [data, setData] = useState([]);
@@ -22,10 +22,21 @@ export default function Meet() {
 
     initialLoad();
   }, []);
+
+  const handleSubmit = async (input) => {
+    await createMeet(input)
+      .then((res) => {
+        if (res.type === 'success') setData(res.data);
+        else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <div className="meet">
-      <Form />
-      <div className="meetList">
+    <main className="page__form_listing meets">
+      <MeetForm action={handleSubmit} />
+      <section className="data_table">
         <p>Meet list</p>
         <table>
           <thead>
@@ -45,10 +56,11 @@ export default function Meet() {
             })}
           </tbody>
         </table>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
+
 const TableRow = ({ data }) => {
   return (
     <tr>

@@ -6,6 +6,7 @@ import Posts from '../components/Posts/Posts';
 import Profile from '../components/Member/Profile';
 import MemberByYear from '../components/Member/MemberByYear';
 import Meet from '../components/Meet/Meet';
+import PostCard from '../components/Posts/PostCard';
 
 const AppFlow = () => {
   return (
@@ -17,6 +18,7 @@ const AppFlow = () => {
         <Route exact path="/members/profile" component={Profile} />
         <Route exact path="/members/:year" component={MemberByYear} />
         <Route exact path="/posts" component={Posts} />
+        <Route exact path="/posts/:id" component={PostCard} />
         <Route exact path="/meet" component={Meet} />
       </Switch>
     </>
