@@ -10,3 +10,46 @@ $heading: 2rem;
 $subHeading: 1.5rem;
 $fontL: 1.2rem;
 $fontxS: 0.75rem;
+
+@mixin dfracjsb {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dfracjsb {
+  @include dfracjsb();
+}
+
+.col {
+  @include dfracjsb();
+  padding: 2rem 1.5rem;
+  margin: 2rem auto;
+
+  .col__row_6 {
+    flex: 1;
+    max-width: 49%;
+  }
+}
+
+.header_bor_btm {
+  padding: 0 0.45rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba($color: #000000, $alpha: 0.45);
+}
+
+.btn_basic {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: $black;
+  background-color: $white;
+  border-radius: 5px;
+  border: 1px solid $black;
+  outline: none;
+  transition: all 400ms ease-in-out;
+  &:hover {
+    color: $white;
+    background-color: $black;
+  }
+}

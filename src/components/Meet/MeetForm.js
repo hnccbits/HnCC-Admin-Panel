@@ -81,6 +81,16 @@ const MeetForm = ({ action }) => {
             />
           </div>
         </div>
+        <div className="meetForm select__options">
+          <label>Select Team</label>
+          <select className="select">
+            <option value="all" label="All" />
+            <option value="content" label="Content" />
+            <option value="design" label="Design" />
+            <option value="marketing" label="Marketing" />
+            <option value="web" label="Web" />
+          </select>
+        </div>
         <div className="meetForm">
           <input className="submit" type="submit" value="Submit" />
         </div>

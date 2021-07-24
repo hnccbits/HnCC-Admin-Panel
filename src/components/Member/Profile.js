@@ -20,6 +20,7 @@ function Profile() {
       if (match.path === '/members/profile') {
         await UsersApi.getProfile()
           .then((res) => {
+            console.log(res);
             if (!isSubscribed) return;
             if (res.type === 'success') {
               setUser(res.data);
@@ -31,6 +32,7 @@ function Profile() {
       } else {
         await UsersApi.getUserData(params.id)
           .then((res) => {
+            console.log(res);
             if (!isSubscribed) return;
             if (res.type === 'success') {
               setUser(res.data);

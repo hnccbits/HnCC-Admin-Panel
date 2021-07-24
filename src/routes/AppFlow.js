@@ -7,19 +7,22 @@ import Profile from '../components/Member/Profile';
 import MemberByYear from '../components/Member/MemberByYear';
 import Meet from '../components/Meet/Meet';
 import PostCard from '../components/Posts/PostCard';
+import Login from '../components/Auth/Login';
+import ProtectedRoute from './ProtectedRoute';
 
 const AppFlow = () => {
   return (
     <>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/members" component={Member} />
-        <Route exact path="/members/:year/:id" component={Profile} />
-        <Route exact path="/members/profile" component={Profile} />
-        <Route exact path="/members/:year" component={MemberByYear} />
-        <Route exact path="/posts" component={Posts} />
-        <Route exact path="/posts/:id" component={PostCard} />
-        <Route exact path="/meet" component={Meet} />
+        <ProtectedRoute exact path="/" component={Home} />
+        <ProtectedRoute exact path="/members" component={Member} />
+        <ProtectedRoute exact path="/members/:year/:id" component={Profile} />
+        <ProtectedRoute exact path="/members/profile" component={Profile} />
+        <ProtectedRoute exact path="/members/:year" component={MemberByYear} />
+        <ProtectedRoute exact path="/posts" component={Posts} />
+        <ProtectedRoute exact path="/posts/:id" component={PostCard} />
+        <ProtectedRoute exact path="/meet" component={Meet} />
+        <Route exact path="/login" component={Login} />
       </Switch>
     </>
   );

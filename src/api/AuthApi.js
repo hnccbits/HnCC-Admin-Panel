@@ -4,22 +4,30 @@ import {
   removeToken,
   storeTokens,
 } from '../context/storage';
-import { history } from '../history';
 import axiosInstance from './axios';
+
+let responseData = {
+  message: 'API not called',
+  type: 'error',
+};
 
 const login = async (data) => {
   await axiosInstance
-    .post('/token', data)
+    .post('/token/', data)
     .then((res) => {
       if (res.status === 200) {
         storeTokens(res.data.access, res.data.refresh);
         axiosInstance.defaults.headers['Authorization'] = getToken();
-        history.push('/');
+        responseData.message = res.statusText;
+        responseData.type = 'success';
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
+      responseData.message = err.statusText;
+      responseData.type = 'error';
     });
+
+  return responseData;
 };
 
 const logout = async () => {

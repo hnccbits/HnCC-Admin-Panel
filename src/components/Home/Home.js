@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UsersApi from '../../api/Users';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { listTasks } from '../../api/TasksAPI';
+import Tasks from '../Tasks/Tasks';
 
 const getYearlyCount = (data) => {
   const final = data.filter((item) => item.year === 2017).length;
@@ -23,6 +26,7 @@ function Home() {
   const [memberCount, setMemberCount] = useState(0);
   const [prefinalCount, setPrefinalCount] = useState(0);
   const [sophomoreCount, setSophomoreCount] = useState(0);
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     initialLoad();
@@ -45,10 +49,20 @@ function Home() {
       .catch((err) => {
         console.log(err);
       });
+
+    await listTasks()
+      .then((res) => {
+        if (res.type === 'success') {
+          setTasks(res.data);
+        } else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
-    <div className="home">
-      <div className="cardRow">
+    <main className="home">
+      <section className="cardRow">
         <div className="card">
           <Circle num={memberCount} title={'Members'} />
           <DetailRowMember
@@ -98,8 +112,35 @@ function Home() {
           nav="events"
           className="events"
         />
-      </div>
-    </div>
+      </section>
+      <section className="col">
+        <div className="col__row_6 home__create">
+          <div className="header_bor_btm dfracjsb">
+            <div className="header__title">
+              <h3>Create task</h3>
+            </div>
+            <div className="header__icon">
+              <AiOutlinePlus />
+            </div>
+          </div>
+          <div className="content">
+            {tasks.slice(0, 3).map((item, index) => {
+              return <Tasks key={index} data={item} />;
+            })}
+          </div>
+        </div>
+        <div className="col__row_6 bcblk">
+          <div className="header_bor_btm dfracjsb">
+            <div className="header__title">
+              <h3>Create task</h3>
+            </div>
+            <div className="header__icon">
+              <AiOutlinePlus />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
 

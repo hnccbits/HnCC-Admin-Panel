@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 import AuthApi from '../../api/AuthApi';
 import { Input, Password } from '../Input';
 
@@ -6,6 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState('');
+  const [redirect, setRedirect] = useState(null);
 
   const handleLogin = async () => {
     if (!username && !password) {
@@ -19,9 +21,20 @@ const Login = () => {
       return;
     }
 
-    await AuthApi.login({ email: username.trim(), password: password.trim() });
+    const loggedIn = await AuthApi.login({
+      email: username.trim(),
+      password: password.trim(),
+    });
+
+    if (loggedIn.type === 'success') {
+      console.log('Calling');
+      setRedirect('/');
+    }
   };
 
+  if (redirect) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className="loginContainer">
       <div className="login">
