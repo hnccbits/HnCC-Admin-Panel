@@ -2,7 +2,7 @@ import React from 'react';
 import { AiFillCheckCircle, AiFillQuestionCircle } from 'react-icons/ai';
 import { MdCancel } from 'react-icons/md';
 
-function Tasks({ data }) {
+function Tasks({ data, update }) {
   return (
     <div className="task__component">
       <div className="header">
@@ -35,6 +35,16 @@ function Tasks({ data }) {
       {/* <div className="dfracjsb btn_container">
         <button className="btn_basic remind">Remind</button>
       </div> */}
+      {!data.completed && (
+        <button
+          onClick={() => {
+            update({ id: data.id, completed: true });
+          }}
+          className={`btn_basic complete`}
+        >
+          Completed
+        </button>
+      )}
     </div>
   );
 }

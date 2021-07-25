@@ -12,40 +12,43 @@ function RightSlider() {
   const [latestRepo, setLatestRepo] = useState([]);
 
   useEffect(() => {
+    let isSubscribed = true;
+    const initialLoad = async () => {
+      await GithubApi.getOrgInfo()
+        .then((res) => {
+          if (res.type === 'success') {
+            if (!isSubscribed) return;
+            setGtihubData(res.data);
+          } else throw res;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      await GithubApi.getOrgMemberInfo()
+        .then((res) => {
+          if (res.type === 'success') {
+            if (!isSubscribed) return;
+            setGithubMemberCount(res.data.length);
+          } else throw res;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      await GithubApi.getOrgRepoInfo()
+        .then((res) => {
+          if (res.type === 'success') {
+            if (!isSubscribed) return;
+            setLatestRepo(res.data);
+          } else throw res;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
     initialLoad();
   }, []);
-
-  const initialLoad = async () => {
-    await GithubApi.getOrgInfo()
-      .then((res) => {
-        if (res.type === 'success') {
-          setGtihubData(res.data);
-        } else throw res;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    await GithubApi.getOrgMemberInfo()
-      .then((res) => {
-        if (res.type === 'success') {
-          setGithubMemberCount(res.data.length);
-        } else throw res;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    await GithubApi.getOrgRepoInfo()
-      .then((res) => {
-        if (res.type === 'success') {
-          setLatestRepo(res.data);
-        } else throw res;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   return (
     <>

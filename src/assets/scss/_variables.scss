@@ -48,6 +48,7 @@ $fontxS: 0.75rem;
   border: 1px solid $black;
   outline: none;
   transition: all 400ms ease-in-out;
+  cursor: pointer;
   &:hover {
     color: $white;
     background-color: $black;

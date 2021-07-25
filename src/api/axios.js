@@ -36,6 +36,12 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(error);
     }
 
+    if (error.response.status === 403) {
+      alert('Not a valid user.');
+
+      return Promise.reject(error);
+    }
+
     if (
       error.response.status === 401 &&
       originalRequest.url === baseURL + '/token/refresh/'

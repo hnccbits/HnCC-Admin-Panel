@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import UsersApi from '../../api/Users';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { listTasks } from '../../api/TasksAPI';
+import { listTasks, UpdateTask } from '../../api/TasksAPI';
 import Tasks from '../Tasks/Tasks';
+import CreateTaskModal from '../Tasks/CreateTaskModal';
 
 const getYearlyCount = (data) => {
   const final = data.filter((item) => item.year === 2017).length;
@@ -27,6 +28,7 @@ function Home() {
   const [prefinalCount, setPrefinalCount] = useState(0);
   const [sophomoreCount, setSophomoreCount] = useState(0);
   const [tasks, setTasks] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     initialLoad();
@@ -60,8 +62,23 @@ function Home() {
         console.log(err);
       });
   };
+
+  const handleTaskStatus = async (input) => {
+    await UpdateTask(input)
+      .then((res) => {
+        if (res.type === 'success') {
+          console.log(res);
+          initialLoad();
+        } else throw res;
+      })
+      .catch((err) => {
+        console.log(err);
+        return;
+      });
+  };
   return (
     <main className="home">
+      <CreateTaskModal close={() => setOpen(false)} open={open} />
       <section className="cardRow">
         <div className="card">
           <Circle num={memberCount} title={'Members'} />
@@ -119,13 +136,15 @@ function Home() {
             <div className="header__title">
               <h3>Create task</h3>
             </div>
-            <div className="header__icon">
+            <div onClick={() => setOpen(true)} className="header__icon">
               <AiOutlinePlus />
             </div>
           </div>
           <div className="content">
             {tasks.slice(0, 3).map((item, index) => {
-              return <Tasks key={index} data={item} />;
+              return (
+                <Tasks update={handleTaskStatus} key={index} data={item} />
+              );
             })}
           </div>
         </div>
@@ -134,7 +153,7 @@ function Home() {
             <div className="header__title">
               <h3>Create task</h3>
             </div>
-            <div className="header__icon">
+            <div onClick={() => setOpen(true)} className="header__icon">
               <AiOutlinePlus />
             </div>
           </div>

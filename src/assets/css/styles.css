@@ -35,6 +35,7 @@
   border: 1px solid #18191a;
   outline: none;
   transition: all 400ms ease-in-out;
+  cursor: pointer;
 }
 
 .btn_basic:hover {
@@ -987,6 +988,42 @@
   margin-top: 1rem;
 }
 
+.task__component .complete {
+  margin-top: 2rem;
+}
+
+.task {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 1.5rem 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+  min-width: 25%;
+  position: relative;
+}
+
+.task .close {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+}
+
+.task__form .input {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.task__form .input label {
+  margin-bottom: 0.5rem;
+}
+
+.task__form .input input,
+.task__form .input textarea,
+.task__form .input select {
+  padding: 0.75rem 1.4rem;
+  font-size: 1rem;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -1021,4 +1058,16 @@ input:-webkit-autofill:active {
   width: 100%;
   z-index: 100;
   position: fixed;
+}
+
+.ReactModal__Overlay {
+  z-index: 100 !important;
+}
+
+.ReactModal__Content {
+  background: unset !important;
+  border: unset !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

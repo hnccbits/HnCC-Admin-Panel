@@ -45,3 +45,14 @@ input:-webkit-autofill:active {
   z-index: 100;
   position: fixed;
 }
+.ReactModal__Overlay {
+  z-index: 100 !important;
+}
+
+.ReactModal__Content {
+  background: unset !important;
+  border: unset !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
