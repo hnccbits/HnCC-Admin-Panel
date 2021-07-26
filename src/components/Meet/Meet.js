@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MeetForm from './MeetForm';
 import { createMeet, getAllMeets } from '../../api/Meets';
+import CreateNotifications from '../config/Notifications';
 
 export default function Meet() {
   const [data, setData] = useState([]);
@@ -10,13 +11,12 @@ export default function Meet() {
     const initialLoad = async () => {
       await getAllMeets()
         .then((res) => {
-          console.log(res);
           if (!isSubscribed) return;
           if (res.type === 'success') setData(res.data);
           else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
     };
 
@@ -26,11 +26,13 @@ export default function Meet() {
   const handleSubmit = async (input) => {
     await createMeet(input)
       .then((res) => {
-        if (res.type === 'success') setData(res.data);
-        else throw res;
+        if (res.type === 'success') {
+          CreateNotifications('success', res.message);
+          setData(res.data);
+        } else throw res;
       })
       .catch((err) => {
-        console.log(err);
+        CreateNotifications('error', err.message);
       });
   };
   return (

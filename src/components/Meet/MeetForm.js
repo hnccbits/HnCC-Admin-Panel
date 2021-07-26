@@ -14,7 +14,7 @@ const MeetForm = ({ action }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    action({ agenda: agenda.trim(), intiated_by: 1, link: link.trim() });
+    action({ agenda: agenda.trim(), intiated_by: 10, link: link.trim() });
 
     setAgenda('');
     setLink('');

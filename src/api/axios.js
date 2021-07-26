@@ -8,13 +8,15 @@ import {
 
 const baseURL = 'http://127.0.0.1:8000/api';
 
+const token = getToken();
+
 const axiosInstance = axios.create({
   baseURL: baseURL,
   timeout: 4000,
   timeoutErrorMessage:
     'Failed to connect with the server. Please check your internet connection.',
   headers: {
-    Authorization: getToken() ? getToken() : null,
+    Authorization: `JWT ${token}`,
     'Content-Type': 'application/json',
     accept: 'application/json',
   },

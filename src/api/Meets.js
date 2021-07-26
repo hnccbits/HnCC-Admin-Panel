@@ -1,3 +1,4 @@
+// import { getToken } from '../context/storage';
 import axiosInstance from './axios';
 
 let responseData = {
@@ -18,7 +19,6 @@ export const getAllMeets = async () => {
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
       responseData.data = null;
       responseData.message =
         `${err.statusText} | code: ${err.status}` ||
@@ -30,6 +30,7 @@ export const getAllMeets = async () => {
 };
 
 export const createMeet = async (data) => {
+  // const token = getToken();
   await axiosInstance
     .post('/meets/', data)
     .then((res) => {

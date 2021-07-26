@@ -15,6 +15,7 @@ export const login = async (data) => {
   await axiosInstance
     .post('/token/', data)
     .then((res) => {
+      console.log(res);
       if (res.status === 200) {
         storeTokens(res.data.access, res.data.refresh);
         axiosInstance.defaults.headers['Authorization'] = getToken();

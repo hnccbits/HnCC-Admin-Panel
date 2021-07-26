@@ -6,6 +6,7 @@ import { listTasks, UpdateTask } from '../../api/TasksAPI';
 import Tasks from '../Tasks/Tasks';
 import CreateTaskModal from '../Tasks/CreateTaskModal';
 import Calendar from '../Calender/Calendar';
+import CreateNotifications from '../config/Notifications';
 
 const calendar = [{ title: 'Festival', date: new Date().toLocaleDateString() }];
 
@@ -52,7 +53,7 @@ function Home() {
         } else throw res;
       })
       .catch((err) => {
-        console.log(err);
+        CreateNotifications('error', err.message);
       });
 
     await listTasks()
@@ -62,7 +63,7 @@ function Home() {
         } else throw res;
       })
       .catch((err) => {
-        console.log(err);
+        CreateNotifications('error', err.message);
       });
   };
 
@@ -70,12 +71,11 @@ function Home() {
     await UpdateTask(input)
       .then((res) => {
         if (res.type === 'success') {
-          console.log(res);
           initialLoad();
         } else throw res;
       })
       .catch((err) => {
-        console.log(err);
+        CreateNotifications('error', err.message);
         return;
       });
   };
