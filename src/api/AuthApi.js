@@ -11,7 +11,7 @@ let responseData = {
   type: 'error',
 };
 
-const login = async (data) => {
+export const login = async (data) => {
   await axiosInstance
     .post('/token/', data)
     .then((res) => {
@@ -30,16 +30,17 @@ const login = async (data) => {
   return responseData;
 };
 
-const logout = async () => {
+export const logout = async () => {
+  const refreshToken = getRefreshToken();
   await axiosInstance
-    .post('/user/logout/blacklist/', getRefreshToken())
+    .post('/user/logout/blacklist/', { refresh_token: refreshToken })
     .then((res) => {
-      if (res.status === 200) {
+      if (res.status === 205) {
         removeToken();
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err, err.status);
     });
 };
 

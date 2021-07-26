@@ -5,6 +5,9 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { listTasks, UpdateTask } from '../../api/TasksAPI';
 import Tasks from '../Tasks/Tasks';
 import CreateTaskModal from '../Tasks/CreateTaskModal';
+import Calendar from '../Calender/Calendar';
+
+const calendar = [{ title: 'Festival', date: new Date().toLocaleDateString() }];
 
 const getYearlyCount = (data) => {
   const final = data.filter((item) => item.year === 2017).length;
@@ -148,14 +151,19 @@ function Home() {
             })}
           </div>
         </div>
-        <div className="col__row_6 bcblk">
+        <div className="col__row_6 bcblk home__calendar">
           <div className="header_bor_btm dfracjsb">
             <div className="header__title">
-              <h3>Create task</h3>
+              <h3>Calendar</h3>
             </div>
             <div onClick={() => setOpen(true)} className="header__icon">
               <AiOutlinePlus />
             </div>
+          </div>
+          <div className="calendar__content">
+            {calendar.map((item, index) => {
+              return <Calendar data={item} key={index} />;
+            })}
           </div>
         </div>
       </section>

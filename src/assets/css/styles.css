@@ -9,7 +9,6 @@
 .col {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
   padding: 2rem 1.5rem;
   margin: 2rem auto;
@@ -661,6 +660,35 @@
   border-radius: 5px;
 }
 
+.home .home__calendar {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.home .home__calendar .calendar__content {
+  margin: 1rem 0;
+}
+
+.home .home__calendar .calendar__content .calendar__card {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.home .home__calendar .calendar__content .calendar__card .calendar__head {
+  margin-bottom: 1rem;
+}
+
+.home .home__calendar .calendar__content .calendar__card .calendar__head h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.home .home__calendar .calendar__content .calendar__card .date p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
 .input-glb {
   position: relative;
   padding: 1rem 0.6rem;
@@ -1070,4 +1098,26 @@ input:-webkit-autofill:active {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logout {
+  position: fixed;
+  top: 2%;
+  right: 1%;
+}
+
+.logout a {
+  padding: 0.5rem 1.2rem;
+  color: white;
+  background-color: tomato;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid tomato;
+  font-size: 1rem;
+  transition: all 400ms ease-in-out;
+}
+
+.logout a:hover {
+  box-shadow: 0px 2px 5px tomato;
 }

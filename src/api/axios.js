@@ -39,7 +39,7 @@ axiosInstance.interceptors.response.use(
     if (error.response.status === 403) {
       alert('Not a valid user.');
 
-      return Promise.reject(error);
+      return Promise.reject(error.response);
     }
 
     if (
@@ -48,7 +48,7 @@ axiosInstance.interceptors.response.use(
     ) {
       window.location.href = '/';
       removeToken();
-      return Promise.reject(error);
+      return Promise.reject(error.response);
     }
 
     if (
@@ -89,8 +89,7 @@ axiosInstance.interceptors.response.use(
         removeToken();
       }
     }
-
-    return Promise.reject(error);
+    return Promise.reject(error.response);
   }
 );
 

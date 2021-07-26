@@ -4,6 +4,7 @@ import { AiFillGithub } from 'react-icons/ai';
 import { BiNetworkChart } from 'react-icons/bi';
 import { MdNotificationsActive } from 'react-icons/md';
 import GithubApi from '../../api/GithubApi';
+import { Link } from 'react-router-dom';
 
 function RightSlider() {
   const [goBottom, setGoBottom] = useState(false);
@@ -17,8 +18,9 @@ function RightSlider() {
       await GithubApi.getOrgInfo()
         .then((res) => {
           if (res.type === 'success') {
-            if (!isSubscribed) return;
-            setGtihubData(res.data);
+            if (isSubscribed) {
+              setGtihubData(res.data);
+            }
           } else throw res;
         })
         .catch((err) => {
@@ -28,8 +30,9 @@ function RightSlider() {
       await GithubApi.getOrgMemberInfo()
         .then((res) => {
           if (res.type === 'success') {
-            if (!isSubscribed) return;
-            setGithubMemberCount(res.data.length);
+            if (isSubscribed) {
+              setGithubMemberCount(res.data.length);
+            }
           } else throw res;
         })
         .catch((err) => {
@@ -39,8 +42,9 @@ function RightSlider() {
       await GithubApi.getOrgRepoInfo()
         .then((res) => {
           if (res.type === 'success') {
-            if (!isSubscribed) return;
-            setLatestRepo(res.data);
+            if (isSubscribed) {
+              setLatestRepo(res.data);
+            }
           } else throw res;
         })
         .catch((err) => {
@@ -52,6 +56,9 @@ function RightSlider() {
 
   return (
     <>
+      <section className="logout">
+        <Link to="/logout">Logout</Link>
+      </section>
       {goBottom && (
         <div className="sliderOpener" onClick={() => setGoBottom(false)}>
           <IoIosArrowUp />

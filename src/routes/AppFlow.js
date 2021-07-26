@@ -9,6 +9,7 @@ import Meet from '../components/Meet/Meet';
 import PostCard from '../components/Posts/PostCard';
 import Login from '../components/Auth/Login';
 import ProtectedRoute from './ProtectedRoute';
+import Logout from '../components/Auth/Logout';
 
 const AppFlow = () => {
   return (
@@ -23,6 +24,8 @@ const AppFlow = () => {
         <ProtectedRoute exact path="/posts/:id" component={PostCard} />
         <ProtectedRoute exact path="/meet" component={Meet} />
         <Route exact path="/login" component={Login} />
+        <ProtectedRoute exact path="/logout" component={Logout} />
+        <Route exact path="/*" component={Home} />
       </Switch>
     </>
   );

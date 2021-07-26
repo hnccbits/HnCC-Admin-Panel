@@ -121,4 +121,33 @@
     background-color: $white;
     border-radius: 5px;
   }
+
+  .home__calendar {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+
+    .calendar__content {
+      margin: 1rem 0;
+
+      .calendar__card {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+        .calendar__head {
+          margin-bottom: 1rem;
+          h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+          }
+        }
+        .date {
+          p {
+            font-size: 1rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
 }
