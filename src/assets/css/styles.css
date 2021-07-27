@@ -57,6 +57,21 @@
   box-shadow: 5px 5px 20px #e4e6eb;
 }
 
+.loginContainer .login select {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  background-color: inherit;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.loginContainer .login select:focus {
+  border: 2px solid #ccc;
+}
+
 .loginContainer .login .header {
   font-size: 2rem;
   text-align: center;

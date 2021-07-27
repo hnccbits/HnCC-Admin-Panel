@@ -33,6 +33,27 @@ export const login = async (data) => {
   return responseData;
 };
 
+export const register = async (input) => {
+  await axiosInstance
+    .post('/user/create/', input)
+    .then((res) => {
+      if (res.status === 200 || res.status === 201) {
+        CreateNotifications('success', 'Successfully Registred');
+        console.log(res);
+        responseData.message = 'Successfully registred';
+        responseData.type = 'success';
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      CreateNotifications('error', `${err.status} | ${err.statusText}`);
+      responseData.message = `${err.status} | ${err.statusText}`;
+      responseData.type = 'error';
+    });
+
+  return responseData;
+};
+
 export const logout = async () => {
   const refreshToken = getRefreshToken();
   await axiosInstance
@@ -54,6 +75,7 @@ export const logout = async () => {
 const AuthApi = {
   login,
   logout,
+  register,
 };
 
 export default AuthApi;

@@ -6,9 +6,11 @@ import Slider from './Slider/Slider';
 function Screen({ children }) {
   const location = useLocation();
 
+  console.log(location);
+
   return (
     <>
-      {location.pathname === '/login' ? (
+      {location.pathname === '/login' || location.pathname === '/register' ? (
         <div className="wrapper">{children}</div>
       ) : (
         <>

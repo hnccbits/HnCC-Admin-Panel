@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import AuthApi from '../../api/AuthApi';
 import CreateNotifications from '../config/Notifications';
 import { Input, Password } from '../Input';
@@ -72,6 +73,8 @@ const Login = () => {
             Login
           </button>
         </form>
+
+        <Link to="/register">Register</Link>
 
         <div className="footer">
           <p className="app">HnCC Web Admin Portal</p>
