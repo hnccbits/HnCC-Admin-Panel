@@ -6,40 +6,44 @@ let responseData = {
   type: 'error',
 };
 
-export const listTasks = async () => {
+export const getAllEvents = async () => {
   await axiosInstance
-    .get('/tasks/')
+    .get('/events/')
     .then((res) => {
       if (res.status === 200) {
         responseData.data = res.data;
-        responseData.message = `${res.statusText} | Succesfully fetched the tasks`;
-        responseData.type = 'success';
-      } else throw res;
-    })
-    .catch((err) => {
-      responseData.data = null;
-      responseData.message = `Something went wrong | ${err.status} | ${err.statusText}`;
-      responseData.type = 'error';
-    });
-
-  return responseData;
-};
-
-export const UpdateTask = async (input) => {
-  await axiosInstance
-    .patch(`/tasks/task/${input.id}/`)
-    .then((res) => {
-      if (res.status === 200) {
-        responseData.data = res.data;
-        responseData.message = 'Successfully updated the task';
+        responseData.message = 'Successfully fetched the events';
         responseData.type = 'success';
       } else throw res;
     })
     .catch((err) => {
       responseData.data = null;
       responseData.message =
-        err.status !== undefined
-          ? `${err.status} | ${err.statusText} `
+        err && err.status
+          ? `${err.status} | ${err.statusText}`
+          : 'Something went wrong';
+      responseData.type = 'error';
+    });
+
+  return responseData;
+};
+
+export const createEvent = async (input) => {
+  await axiosInstance
+    .post('/events/', input)
+    .then((res) => {
+      console.log(res);
+      if (res.status === 200) {
+        responseData.data = res.data;
+        responseData.message = 'Successfully fetched the events';
+        responseData.type = 'success';
+      } else throw res;
+    })
+    .catch((err) => {
+      responseData.data = null;
+      responseData.message =
+        err && err.status
+          ? `${err.status} | ${err.statusText}`
           : 'Something went wrong';
       responseData.type = 'error';
     });

@@ -17,7 +17,6 @@ const getAllUsers = async () => {
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
       responseData.data = null;
       responseData.message =
         `${err.statusText} | code: ${err.status}` ||
@@ -39,7 +38,6 @@ const getUserByYear = async (input) => {
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
       responseData.data = null;
       responseData.message =
         `${err.statusText} | code: ${err.status}` ||
@@ -66,7 +64,6 @@ const getUserData = async (id) => {
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
       responseData.data = null;
       responseData.message =
         `${err.statusText} | code: ${err.status}` ||

@@ -9,6 +9,7 @@ import {
 } from 'react-icons/io';
 import GithubApi from '../../api/GithubApi';
 import UsersApi from '../../api/Users';
+import CreateNotifications from '../config/Notifications';
 
 function ProfileDetailView({ data }) {
   const [githubData, setGithubData] = useState({});
@@ -54,7 +55,7 @@ function ProfileDetailView({ data }) {
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
       await GithubApi.getProfileRepoInfo('Zeeshan-2k1')
         .then((res) => {
@@ -64,7 +65,7 @@ function ProfileDetailView({ data }) {
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
       await UsersApi.getUserCodingProfile('zeeshan_2k1')
         .then((res) => {
@@ -75,7 +76,7 @@ function ProfileDetailView({ data }) {
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
     };
 
@@ -233,7 +234,7 @@ const GithubRepoInfo = ({ data }) => {
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
     };
     initialLoad();

@@ -17,7 +17,6 @@ const getAllPosts = async () => {
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
       responseData.data = null;
       responseData.message =
         `${err.statusText} | code: ${err.status}` ||
@@ -39,7 +38,6 @@ const getPostDetail = async (id) => {
       } else throw res;
     })
     .catch((err) => {
-      console.log(err);
       responseData.data = null;
       responseData.message =
         `${err.statusText} | code: ${err.status}` ||

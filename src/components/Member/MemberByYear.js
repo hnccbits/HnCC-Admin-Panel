@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import UsersApi from '../../api/Users';
+import CreateNotifications from '../config/Notifications';
 import MemberContent from './MemberContent';
 
 const batchConverter = (year) => {
@@ -27,7 +28,7 @@ export default function MemberByYear(props) {
         } else throw res;
       })
       .catch((err) => {
-        console.log(err);
+        CreateNotifications('error', err.message);
       });
   };
   return (

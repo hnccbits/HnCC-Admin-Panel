@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import PostsApi from '../../api/PostsApi';
+import CreateNotifications from '../config/Notifications';
 
 function PostCard({ initialData }) {
   const [data, setData] = useState(initialData);
@@ -16,7 +17,7 @@ function PostCard({ initialData }) {
           else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
     };
     initialLoad();

@@ -4,8 +4,7 @@ import { useParams, useRouteMatch } from 'react-router-dom';
 import UsersApi from '../../api/Users';
 import ProfileDetailView from './ProfileDetailView';
 import { history } from '../../history';
-
-// import ProfileEditView from './ProfileEditView';
+import CreateNotifications from '../config/Notifications';
 
 function Profile() {
   const [user, setUser] = useState({});
@@ -20,14 +19,13 @@ function Profile() {
       if (match.path === '/members/profile') {
         await UsersApi.getProfile()
           .then((res) => {
-            console.log(res);
             if (!isSubscribed) return;
             if (res.type === 'success') {
               setUser(res.data);
             } else throw res;
           })
           .catch((err) => {
-            console.log(err);
+            CreateNotifications('error', err.message);
           });
       } else {
         await UsersApi.getUserData(params.id)
@@ -39,7 +37,7 @@ function Profile() {
             } else throw res;
           })
           .catch((err) => {
-            console.log(err);
+            CreateNotifications('error', err.message);
           });
       }
     };

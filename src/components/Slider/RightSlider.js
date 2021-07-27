@@ -5,6 +5,7 @@ import { BiNetworkChart } from 'react-icons/bi';
 import { MdNotificationsActive } from 'react-icons/md';
 import GithubApi from '../../api/GithubApi';
 import { Link } from 'react-router-dom';
+import CreateNotifications from '../config/Notifications';
 
 function RightSlider() {
   const [goBottom, setGoBottom] = useState(false);
@@ -24,7 +25,7 @@ function RightSlider() {
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
 
       await GithubApi.getOrgMemberInfo()
@@ -36,7 +37,7 @@ function RightSlider() {
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
 
       await GithubApi.getOrgRepoInfo()
@@ -48,7 +49,7 @@ function RightSlider() {
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
     };
     initialLoad();

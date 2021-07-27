@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import UsersApi from '../../api/Users';
+import CreateNotifications from '../config/Notifications';
 
 const getYearlyCount = (data) => {
   const final = data.filter((item) => item.year === 2017).length;
@@ -43,7 +44,7 @@ function Member() {
         } else throw res;
       })
       .catch((err) => {
-        console.log(err);
+        CreateNotifications('error', err.message);
       });
 
     // await BackendApi.createPost(1);

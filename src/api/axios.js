@@ -1,4 +1,5 @@
 import axios from 'axios';
+import CreateNotifications from '../components/config/Notifications';
 import {
   getToken,
   getRefreshToken,
@@ -30,16 +31,17 @@ axiosInstance.interceptors.response.use(
     const originalRequest = error.config;
 
     if (typeof error.response === 'undefined') {
-      alert(
+      CreateNotifications(
+        'error',
         'A server/network error occurred. ' +
           'Looks like CORS might be the problem. ' +
           'Sorry about this - we will get it fixed shortly.'
       );
-      return Promise.reject(error);
+      return Promise.reject(error.response);
     }
 
     if (error.response.status === 403) {
-      alert('Not a valid user.');
+      CreateNotifications('error', 'Access Denied! Not a valid user.');
 
       return Promise.reject(error.response);
     }
@@ -78,17 +80,23 @@ axiosInstance.interceptors.response.use(
               return axiosInstance(originalRequest);
             })
             .catch((err) => {
-              console.log(err);
+              CreateNotifications('error', 'Something went wrong');
             });
         } else {
-          console.log('Refresh token is expired', tokenParts.exp, now);
-          window.location.href = '/';
+          CreateNotifications(
+            'error',
+            `Refresh token is expired, ${tokenParts.exp}, ${now}`
+          );
           removeToken();
+          window.location.href = '/login';
         }
       } else {
-        console.log('Refresh token not available.');
-        window.location.href = '/';
+        CreateNotifications(
+          'error',
+          'Refresh token not available. Sign In Required'
+        );
         removeToken();
+        window.location.href = '/login';
       }
     }
     return Promise.reject(error.response);

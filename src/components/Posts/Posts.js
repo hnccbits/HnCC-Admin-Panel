@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import PostsApi from '../../api/PostsApi';
+import CreateNotifications from '../config/Notifications';
 import PostForm from './PostForm';
 
 function Posts() {
@@ -10,13 +11,12 @@ function Posts() {
     const initialLoad = async () => {
       await PostsApi.getAllPosts()
         .then((res) => {
-          console.log(res);
           if (res.type === 'success') {
             setPosts(res.data);
           } else throw res;
         })
         .catch((err) => {
-          console.log(err);
+          CreateNotifications('error', err.message);
         });
     };
 

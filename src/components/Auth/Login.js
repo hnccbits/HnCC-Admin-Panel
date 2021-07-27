@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router';
 import AuthApi from '../../api/AuthApi';
+import CreateNotifications from '../config/Notifications';
 import { Input, Password } from '../Input';
 
 const Login = () => {
@@ -11,13 +12,13 @@ const Login = () => {
 
   const handleLogin = async () => {
     if (!username && !password) {
-      alert('Please enter username and password');
+      CreateNotifications('warning', 'Please enter username and password');
       return;
     } else if (!username) {
-      alert('Please enter username');
+      CreateNotifications('warning', 'Please enter username');
       return;
     } else if (!password) {
-      alert('Please enter password');
+      CreateNotifications('warning', 'Please enter password');
       return;
     }
 
@@ -27,7 +28,6 @@ const Login = () => {
     });
 
     if (loggedIn.type === 'success') {
-      console.log('Calling');
       setRedirect('/');
     }
   };

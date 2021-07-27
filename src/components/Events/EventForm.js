@@ -1,36 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import UsersApi from '../../api/Users';
+import CreateNotifications from '../config/Notifications';
 import { DateTimePicker, FormInput } from '../Input';
 
 const DATE = `${new Date().getFullYear()}-${
   new Date().getUTCMonth() + 1 ? '0' : ''
 }${new Date().getUTCMonth() + 1}-${new Date().getDate()}`;
 
-const TIME = `${new Date().getHours() < 9 ? '0' : ''}${new Date().getHours()}:${
-  new Date().getMinutes() < 9 ? '0' : ''
-}${new Date().getMinutes()}`;
-
-const MeetForm = ({ action }) => {
+const EventForm = ({ action }) => {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState(DATE);
-  const [time, setTime] = useState(TIME);
   const [agenda, setAgenda] = useState('');
-  const [link, setLink] = useState('');
   const [team, setTeam] = useState('all');
+  const [members, setMembers] = useState([]);
+  const [lead, setLead] = useState('');
+
+  useEffect(() => {
+    const initialLoad = async () => {
+      await UsersApi.getAllUsers()
+        .then((res) => {
+          if (res.type === 'success') {
+            setMembers(res.data);
+          } else throw res;
+        })
+        .catch((err) => {
+          console.log(err);
+          CreateNotifications('error', err.message);
+        });
+    };
+
+    initialLoad();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     action({
-      agenda: agenda.trim(),
-      intiated_by: 10,
-      link: link.trim(),
+      content: agenda.trim(),
+      lead: 10,
+      title: title.trim(),
       team: team.trim(),
-      start_time: time,
+      start_date: date,
     });
 
     setAgenda('');
-    setLink('');
     setDate(DATE);
-    setTime(TIME);
     setTitle('');
     setTeam('');
   };
@@ -49,27 +62,6 @@ const MeetForm = ({ action }) => {
             placeholder="Title of the meet"
             required
           />
-          <FormInput
-            label="Agenda"
-            type="text"
-            value={agenda}
-            onChange={(e) => setAgenda(e.target.value)}
-            id="agenda"
-            placeholder="Title of the meet"
-            required
-          />
-        </div>
-        <div className="meetForm">
-          <FormInput
-            label="Meet Link"
-            type="text"
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
-            id="meetLink"
-            placeholder="Enter meet link"
-            required
-          />
-
           <div className="rowDate">
             <DateTimePicker
               label="Date"
@@ -81,16 +73,31 @@ const MeetForm = ({ action }) => {
               min={DATE}
               required
             />
-
-            <DateTimePicker
-              label="Time"
-              type="time"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-              id="time"
-              placeholder="Select"
-              required
-            />
+          </div>
+        </div>
+        <div className="meetForm">
+          <FormInput
+            label="Agenda"
+            type="text"
+            value={agenda}
+            onChange={(e) => setAgenda(e.target.value)}
+            id="agenda"
+            placeholder="Title of the meet"
+            required
+          />
+          <div className="meetForm event__form_team_select select__options">
+            <label>Select Lead</label>
+            <select
+              onChange={(e) => setLead(e.target.value)}
+              value={lead}
+              className="select"
+            >
+              {members.map((item, index) => {
+                return (
+                  <option value={item.id} label={item.user_name} key={index} />
+                );
+              })}
+            </select>
           </div>
         </div>
         <div className="meetForm select__options">
@@ -115,4 +122,4 @@ const MeetForm = ({ action }) => {
   );
 };
 
-export default MeetForm;
+export default EventForm;

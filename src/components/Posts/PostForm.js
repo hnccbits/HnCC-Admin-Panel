@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createMeet } from '../../api/Meets';
+import CreateNotifications from '../config/Notifications';
 import { DateTimePicker, FormInput } from '../Input';
 
 const DATE = `${new Date().getFullYear()}-${
@@ -43,7 +44,7 @@ const PostForm = ({ setData }) => {
         else throw res;
       })
       .catch((err) => {
-        console.log(err);
+        CreateNotifications('error', err.message);
       });
     setLink('');
     setTitle('');
